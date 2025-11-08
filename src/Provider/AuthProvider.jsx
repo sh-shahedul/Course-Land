@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,  sendPasswordResetEmail,  signInWithEmailAndPassword,  signInWithPopup, signOut, updateProfile } from 'firebase/auth';
-import { auth } from '../FireBase/fireBase.init';
+ import { auth } from '../FireBase/fireBase.init';
 
 //  googole provider 
 const googleProvider = new GoogleAuthProvider()
@@ -9,7 +9,7 @@ const googleProvider = new GoogleAuthProvider()
 
 
 const AuthProvider = ({children}) => {
-    const[user,setuser]=useState()
+    const[user,setuser]=useState(null)
      const[loading,setLoading]=useState(true)
 
         // email pass 
@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
      }
 
-      
+      //observer
   useEffect(()=>{
     const unSubscribe= onAuthStateChanged(auth, (currentuser)=>{
         console.log('current ',currentuser)

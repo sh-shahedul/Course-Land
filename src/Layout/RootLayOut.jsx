@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import NavBar from '../Components/NavBar/NavBar';
 import Footer from '../page/Footer/Footer';
-
+import { Toaster } from "react-hot-toast";
 const RootLayOut = () => {
     return (
         <div>
@@ -12,7 +12,13 @@ const RootLayOut = () => {
                     <Outlet></Outlet>
                 </div>
                 <Footer></Footer>
+
+               <Toaster position="top-center" reverseOrder={false} />
+       
+                
              </div>
+
+
 
         </div>
     );

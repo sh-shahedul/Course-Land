@@ -1,79 +1,23 @@
-// import React from 'react';
-// import { IoIosArrowDown } from 'react-icons/io';
-// import { Link, NavLink } from 'react-router';
-
-// const NavBar = () => {
-
-//     const links = <>
-//     <li>
-//     <NavLink 
-//       to="/"
-//       className="px-4 py-2 rounded-xl font-semibold text-gray-700 hover:border-2 hover:border-pink-600 transition-all duration-300">
-//       Home
-//     </NavLink>
-//   </li>
-//   <li>
-//     <NavLink 
-//       to="/courses"
-//       className="px-4 py-2 rounded-xl font-semibold text-gray-700 hover:border-2 hover:border-pink-600 transition-all duration-300">
-//       Courses
-//     </NavLink>
-//   </li>
-
-//   {/* Dashboard Dropdown */}
-//    <details className="dropdown">
-//    <summary className="btn m-1">DashBord</summary>
-//    <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-//     <li><a>Item 1</a></li>
-//     <li><a>Item 2</a></li>
-//   </ul>
-// </details>
-       
-//     </>
-//     return (
-//        <div className="navbar bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 shadow-sm">
-//   <div className="navbar-start">
-//     <div className="dropdown">
-//       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-//         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-//       </div>
-//       <ul
-//         tabIndex="-1"
-//         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-//         {links}
-//       </ul>
-//     </div>
-//     <a className=" text-xl">daisyUI</a>
-//   </div>
-//   <div className="navbar-center hidden lg:flex">
-//     <ul className="menu menu-horizontal px-1">
-//       {links}
-//     </ul>
-//   </div>
-//   <div className="navbar-end">
-//      <div className="text-white w-10 h-10 flex items-center justify-center border-2 rounded-full cursor-pointer relative">
-//                 <img
-//                   className="w-9 h-9 rounded-full"
-//                   src={''}
-//                   alt="User Image"
-//                 />
-//               </div>
-//     <a className="btn">Button</a>
-//   </div>
-// </div>
-//     );
-// };
-
-// export default NavBar;
-
-
-
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
 import { IoIosArrowDown } from 'react-icons/io';
+import { AuthContext } from '../../Provider/AuthContext';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+const {user,signOutUser} =use(AuthContext)
+
+const handelSignOut =()=>{
+        signOutUser()
+         .then(()=>{
+          toast.success(' Logout Successful 🎉')         
+         })
+         .catch((error)=>{
+          console.log(error)
+          })  
+}
+
 
 const links = <>
             <li>
@@ -90,7 +34,9 @@ const links = <>
                 Courses
               </NavLink>
             </li>
-       <li className="dropdown dropdown-end">
+    {
+        user &&     
+        <li className="dropdown dropdown-end">
       <label
         tabIndex={0}
         className="flex items-center gap-1 px-4 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer"
@@ -113,13 +59,14 @@ const links = <>
         </li>
       </ul>
     </li>
+    }
             
 </>
 
 
   return (
     <div
-      className="shadow-xs sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200">
+      className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200">
       <div className="navbar  max-xl:max-w-7xl max-lg:max-w-5xl max-md:max-w-3xl max-sm:max-w-screen-sm text-gray-800 w-[97%] mx-auto">
 
         {/* Left */}
@@ -150,30 +97,35 @@ const links = <>
         </div>
         {/*  Right */}
         <div className="navbar-end gap-3">
-               <div className="text-white w-10 h-10 flex items-center justify-center border-2 rounded-full cursor-pointer relative">
+               {
+                user? <div className="text-white w-10 h-10 flex items-center justify-center border-2 rounded-full cursor-pointer relative">
                 <img
                   className="w-9 h-9 rounded-full"
-                  src=''
+                  src={user.photoURL}
                   alt="User Image"
                 />
-              </div>
+              </div> :''
+               }
           {/* User Avatar with title */}
 
-          {/* {user && (<img src={user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="User Avatar" title={user.displayName || "User"} className="w-9 h-9 rounded-full border-2 border-purple-500 cursor-pointer" />)
-          } */}
+         {/* {user && (<img src={user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="User Avatar" title={user.displayName || "User"} className="w-9 h-9 rounded-full border-2 border-purple-500 cursor-pointer" />)
+          }  */}
 
           {/* Login / Logout Buttons */}
             
-            {/* <Link to="/login"
+          {/* <Link to="/login"
               onClick={''}
-              className="px-4 py-2 rounded-md bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold hover:scale-105 hover:shadow-md transition-all duration-300">Sign Out</Link>) */}
+              className="px-4 py-2 rounded-md bg-linear-to-r from-blue-500 to-purple-600 text-white font-semibold hover:scale-105 hover:shadow-md transition-all duration-300">Sign Out</Link> */}
 
              <div className="flex gap-3">
 
-              <Link to="/login"
-                className="px-3 py-2 md:px-4 md:py-2 rounded-md bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold hover:scale-105 hover:shadow-md transition-all duration-300">Login</Link>
+                 {
+                    user? 
+                    ( <button onClick={handelSignOut}  className="px-3 py-2 md:px-6 md:py-2 rounded-md bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold  hover:from-indigo-500 hover:to-pink-500 ">Sign Out</button>) 
 
-              {/* <Link to="/signup" className="px-3 py-2 md:px-4 md:py-2 rounded-md bg-linear-to-r from-pink-500 to-purple-600 text-white font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"> Sign Up </Link> */}
+                    : (<Link to="/login" className="px-3 py-2 md:px-6 md:py-2 rounded-md bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold  hover:from-indigo-500 hover:to-pink-500 ">Login</Link>)
+                 }
+
 
             </div>
            

@@ -100,13 +100,10 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative border px-5 py-2 rounded-lg mt-10 cursor-pointer 
-              bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 
-              text-white font-medium
-              hover:text-pink-600 hover:font-semibold
-              transition-all duration-300"
+            className=" border px-8 py-2 rounded-lg mt-10 cursor-pointer 
+              bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400  text-white font-medium  hover:from-indigo-500 hover:to-pink-500 "
           >
-            Explore More
+            All Courses
           </motion.button>
         </AnimatePresence>
       </div>
