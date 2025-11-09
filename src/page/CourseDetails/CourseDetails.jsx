@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
@@ -38,7 +38,7 @@ const CourseDetails = () => {
         <img
           src={course.imageURL}
           alt={course.title}
-          className="w-full h-[500px] rounded-2xl object-cover"
+          className="sm:w-[700px] sm:h-[500px]  rounded-2xl object-cover"
         />
         {course.isFeatured && (
           <span className="absolute top-4 left-4 bg-pink-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
@@ -97,10 +97,10 @@ const CourseDetails = () => {
             className="bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
             Enroll Now
           </button>
-        <button
+        <Link to='/'
             className="bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
-            Update
-          </button>
+           Back To Home
+          </Link>
        </div>
       </div>
       

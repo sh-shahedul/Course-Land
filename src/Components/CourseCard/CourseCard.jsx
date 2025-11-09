@@ -36,7 +36,7 @@ const CourseCard = ({course}) => {
               
               {/* Full width button */}
               <Link to={`/details/${course._id}`}
-                className=" border px-8 py-2 rounded-lg text-center  cursor-pointer 
+                className=" border px-8 py-2 rounded-full text-center  cursor-pointer 
               bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400  text-white font-medium  hover:from-sky-500 hover:to-pink-500 "
               >
                 View Details

@@ -46,7 +46,7 @@ const Courses = () => {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             {categories.map((cat) => (
-              <option key={cat._id} value={cat}>
+              <option key={cat} value={cat}>
                 {cat}
               </option>
             ))}
