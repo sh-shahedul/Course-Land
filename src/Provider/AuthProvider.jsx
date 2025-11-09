@@ -3,14 +3,14 @@ import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,  sendPasswordResetEmail,  signInWithEmailAndPassword,  signInWithPopup, signOut, updateProfile } from 'firebase/auth';
  import { auth } from '../FireBase/fireBase.init';
 
-//  googole provider 
-const googleProvider = new GoogleAuthProvider()
+        //  googole provider 
+       const googleProvider = new GoogleAuthProvider()
 
 
 
-const AuthProvider = ({children}) => {
-    const[user,setuser]=useState(null)
-     const[loading,setLoading]=useState(true)
+     const AuthProvider = ({children}) => {
+        const[user,setuser]=useState(null)
+        const[loading,setLoading]=useState(true)
 
         // email pass 
      const createUser = (email,password)=>{

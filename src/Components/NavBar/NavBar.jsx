@@ -49,12 +49,15 @@ const links = <>
       >
         <li>
           <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
-            Item 1
+            Add Course
           </NavLink>
         </li>
         <li>
           <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
-            Item 2
+            My Added Course
+          </NavLink>
+          <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
+            My Enrolled Course
           </NavLink>
         </li>
       </ul>
@@ -86,7 +89,7 @@ const links = <>
             </ul>
           </div>
        
-             <img className='w-40' src={logo} alt="" />
+             <img className='sm:w-40 w-28' src={logo} alt="" />
          
         </div>
         {/* Center */}

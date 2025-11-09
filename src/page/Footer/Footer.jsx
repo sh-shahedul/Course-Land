@@ -9,7 +9,7 @@ const Footer = () => {
 
                     {/* About + Resources */}
                     <div className='space-y-6'>
-                        <img className='w-40' src={logo} alt="" />
+                        <img className='sm:w-40 w-28' src={logo} alt="" />
                         <p className="text-gray-300">
                             CourseLand is your hub to explore, learn, and grow. Discover top courses, connect with instructors, and achieve your learning goals in a fun and interactive way.
                         </p>

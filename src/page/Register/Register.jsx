@@ -9,7 +9,7 @@ import { TbEyeClosed } from "react-icons/tb";
 
 
  const Register = () => {
-   const {createUser,googleUser}=use(AuthContext)
+   const {createUser,googleUser,updateProfileuser,setuser}=use(AuthContext)
    const[error,setError]=useState('')
     const[show,setShow]=useState(false)
     const[success,setSuccess]=useState('')
@@ -17,8 +17,8 @@ import { TbEyeClosed } from "react-icons/tb";
     const handelRegister=(e)=>{
            e.preventDefault()
            const form = e.target
-        //    const name = form.name.value
-        //    const photo = form.photo.value
+           const name = form.name.value
+           const photo = form.photo.value
            const email = form.email.value
            const password = form.password.value
            const term = form.term.checked
@@ -46,10 +46,21 @@ import { TbEyeClosed } from "react-icons/tb";
             return
             }
            setSuccess('')
-       createUser(email,password)
+        createUser(email,password)
        .then(result=>{
         console.log(result.user)
-         toast.success("🎉 Login Successful!");
+          setSuccess('Login Successful!')
+            e.target.reset()
+            toast.success("🎉 Login Successful!");
+            updateProfileuser({ displayName : name ,  photoURL : photo  })
+            .then(()=>{
+             setuser({...result.user , displayName : name ,  photoURL : photo  })
+            })
+             .catch((error)=>{
+                const message = getFriendlyMessage(error.code)
+                setError(message)
+                
+            })
          navigate('/')
        })
        .catch(error=>{

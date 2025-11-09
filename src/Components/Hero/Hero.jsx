@@ -51,7 +51,7 @@ export default function Hero() {
   }, [totalSlides]);
 
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
+    <div className="relative w-full h-[500px] flex items-center justify-center text-center text-white overflow-hidden mb-5">
       {/* Slides container */}
       <div
         ref={containerRef}
@@ -71,44 +71,41 @@ export default function Hero() {
 
       {/* Animated Text & Button */}
       <div className="relative z-10 max-w-2xl mx-auto md:px-6 px-2">
-        <AnimatePresence mode="wait">
-          <motion.h1
-            key={current}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl font-bold mt-5 mb-8 text-blue-100 drop-shadow-lg title-font"
-          >
-            {slides[current].title}
-          </motion.h1>
+       <motion.h1
+  key={current}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.8, delay: 0 }} 
+  className="text-3xl md:text-5xl font-bold mt-5 mb-8 text-blue-100 drop-shadow-lg title-font"
+>
+  {slides[current].title}
+</motion.h1>
 
-          <motion.p
-            key={`desc-${current}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl mb-6 text-gray-200 drop-shadow-md"
-          >
-            {slides[current].description}
-          </motion.p>
+<motion.p
+  key={`desc-${current}`}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="text-lg md:text-xl mb-6 text-gray-200 drop-shadow-md"
+>
+  {slides[current].description}
+</motion.p>
 
-          <motion.button
-            key={`btn-${current}`}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className=" border px-8 py-2 rounded-lg mt-10 cursor-pointer 
-              bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400  text-white font-medium  hover:from-indigo-500 hover:to-pink-500 "
-          >
-            All Courses
-          </motion.button>
-        </AnimatePresence>
-      </div>
+<motion.button
+  key={`btn-${current}`}
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.8 }}
+  transition={{ duration: 0.5, delay: 0.4 }} 
+  className=" border px-8 py-2 rounded-lg mt-10 cursor-pointer 
+    bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-medium hover:from-indigo-500 hover:to-pink-500">
+  All Courses
+</motion.button>
+    </div>
 
-      {/* Slide indicators */}
+      {/* dot slider  */}
       <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-10">
         {slides.map((_, i) => (
           <button

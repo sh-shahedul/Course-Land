@@ -5,6 +5,11 @@ import Courses from "../page/Courses/Courses";
 import Login from "../page/LogIn/Login";
 import Register from "../page/Register/Register";
 import ForgotPassword from "../Components/ForgotPassword/ForgotPassword";
+import PrivateRouter from "../Provider/PrivateRouter";
+import AddCourse from "../page/AddCourse/AddCourse";
+import MyAddedCourse from "../page/MyAddedCourse/MyAddedCourse";
+import MyEnrolledCourse from "../page/MyEnrolledCoursed/MyEnrolledCourse";
+import CourseDetails from "../page/CourseDetails/CourseDetails";
 
 
 
@@ -33,7 +38,24 @@ export const router = createBrowserRouter([
             path:'forgotpass',
             Component:ForgotPassword,
 
+        },
+        {
+         path:'details',
+         element:<CourseDetails></CourseDetails>
+        },
+        {
+          path:'addCourse',
+          element:<PrivateRouter><AddCourse></AddCourse></PrivateRouter>
+        },
+        {
+          path:'myAddCourse',
+          element:<PrivateRouter><MyAddedCourse></MyAddedCourse></PrivateRouter>
+        },
+        {
+          path:'myEnrollCourse',
+          element:<PrivateRouter><MyEnrolledCourse></MyEnrolledCourse></PrivateRouter>
         }
+       
         
      ]
   },
