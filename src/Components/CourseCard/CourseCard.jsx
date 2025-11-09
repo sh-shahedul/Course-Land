@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router';
 const CourseCard = ({course}) => {
     return (
         <div>
@@ -34,12 +35,12 @@ const CourseCard = ({course}) => {
               </div>
               
               {/* Full width button */}
-              <button
-                className=" border px-8 py-2 rounded-lg  cursor-pointer 
+              <Link to={`/details/${course._id}`}
+                className=" border px-8 py-2 rounded-lg text-center  cursor-pointer 
               bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400  text-white font-medium  hover:from-sky-500 hover:to-pink-500 "
               >
                 View Details
-              </button>
+              </Link>
             </div>
           </motion.div>
             
