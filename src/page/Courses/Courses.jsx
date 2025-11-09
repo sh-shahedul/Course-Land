@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import CourseCard from "../../Components/CourseCard/CourseCard";
+import Loading from "../../Components/Loading/Loading";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState(["All"]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
 
- 
+  
   useEffect(() => {
-    fetch("http://localhost:3000/course") 
+    setLoading(true);
+    const url =
+      selectedCategory === "All"
+        ? "http://localhost:3000/course"
+        : `http://localhost:3000/course?category=${encodeURIComponent(selectedCategory)}`;
+
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
-        setLoading(false);
+        
+        if (selectedCategory === "All") {
+          const uniqueCategories = ["All", ...Array.from(new Set(data.map((c) => c.category))),];
+          setCategories(uniqueCategories);
+        }
       })
-      .catch((err) => {
-        console.error("Error fetching courses:", err);
-        setLoading(false);
-      });
-  }, []);
-
- 
-  const categoryNames = courses.map(course => course.category);
-  const uniqueCategories = Array.from(new Set(categoryNames));
-  const categories = ["All", ...uniqueCategories];
-
-  // Filter courses by category
-  const filteredCourses = selectedCategory === "All"
-      ? courses
-      : courses.filter((c) => c.category === selectedCategory);
+      .catch((err) => console.error("Error fetching courses:", err))
+      .finally(() => setLoading(false));
+  }, [selectedCategory]);
 
   return (
     <section className="py-16 bg-gray-50 min-h-screen">
@@ -38,31 +37,34 @@ const Courses = () => {
           All Courses
         </h2>
 
-        {/* Category Filter Buttons */}
-        <div className="flex justify-center flex-wrap gap-3 mb-12">
-          {categories.map((cat) => (
-            <ul>
-                <li onClick={() => setSelectedCategory(cat)} className={`px-5 py-2  rounded-full font-medium transition-all  duration-300 ${ selectedCategory === cat
-                  ? "bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 text-white shadow-lg"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {cat}
-            </li>
-            </ul>
-          ))}
+        {/* Category Dropdown */}
+        <div className="mb-6 flex justify-between items-center w-[97%] mx-auto py-10">
+        <h1 className="text-3xl font-semibold">Categories : <span className="text-xl font-black text-pink-600">({courses.length})</span></h1>
+          <select
+            className="w-full max-w-xs px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {/* Loading and Course Grid */}
+        
         {loading ? (
-          <p className="text-center text-gray-500">Loading courses...</p>
-        ) : filteredCourses.length === 0 ? (
+         <Loading></Loading>
+        ) : courses.length === 0 ? (
           <p className="text-center text-gray-500">
             No courses found in this category.
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCourses.map((course) =><CourseCard course={course}></CourseCard> )}
+            {courses.map((course) => (
+              <CourseCard key={course.title} course={course} />
+            ))}
           </div>
         )}
       </div>
@@ -72,43 +74,3 @@ const Courses = () => {
 
 export default Courses;
 
-
-// (
-//               <motion.div
-//                 key={course._id || course.title}
-//                 whileHover={{ scale: 1.05 }}
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.5 }}
-//                 className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-//               >
-//                 <img
-//                   src={course.imageURL}
-//                   alt={course.title}
-//                   className="w-full h-56 object-cover"
-//                 />
-//                 <div className="p-5 flex flex-col h-full">
-//                   <h3 className="text-xl font-semibold mb-2">
-//                     {course.title}
-//                   </h3>
-//                   <p className="text-gray-500 mb-1">{course.category}</p>
-//                   <p className="text-pink-600 font-bold mb-2">
-//                     ${course.price}
-//                   </p>
-//                   <p className="text-gray-600 text-sm mb-2">
-//                     Duration: {course.duration}
-//                   </p>
-//                   <p className="text-gray-600 text-sm mb-4">
-//                     Instructor: {course.instructor}
-//                   </p>
-
-//                   <motion.button
-//                     whileHover={{ scale: 1.05 }}
-//                     whileTap={{ scale: 0.95 }}
-//                     className="w-full bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white px-4 py-2 rounded-md font-semibold hover:from-indigo-500 hover:to-pink-500 transition-all mt-auto"
-//                   >
-//                     View Details
-//                   </motion.button>
-//                 </div>
-//               </motion.div>
-//             )

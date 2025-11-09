@@ -48,15 +48,15 @@ const links = <>
         className="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
       >
         <li>
-          <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
+          <NavLink to='/addCourse' className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
             Add Course
           </NavLink>
         </li>
         <li>
-          <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
+          <NavLink to='/myAddCourse' className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
             My Added Course
           </NavLink>
-          <NavLink className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
+          <NavLink to='/myEnrollCourse' className="block px-4 py-2 text-gray-700 hover:bg-pink-100 rounded-md">
             My Enrolled Course
           </NavLink>
         </li>

@@ -3,7 +3,7 @@
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-pink-200">
+    <div className="flex items-center justify-center mt-30">
       <FaSpinner className="text-4xl text-pink-600 animate-spin" />
     </div>
   );
