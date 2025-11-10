@@ -101,16 +101,12 @@ const UpdateCourse = () => {
             required
             className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
-            <option disabled>Select Level</option>
+            <option >Select Level</option>
             <option value="Beginner">Beginner</option>
-            <option value="Beginner to Intermediate">
-              Beginner to Intermediate
-            </option>
+            <option value="Beginner to Intermediate"> Beginner to Intermediate</option>
             <option value="Beginner to Advanced">Beginner to Advanced</option>
             <option value="Intermediate">Intermediate</option>
-            <option value="Intermediate to Advanced">
-              Intermediate to Advanced
-            </option>
+            <option value="Intermediate to Advanced"> Intermediate to Advanced</option>
             <option value="Advanced">Advanced</option>
           </select>
 
@@ -120,14 +116,12 @@ const UpdateCourse = () => {
             required
             className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
-            <option disabled>Select Category</option>
+            <option >Select Category</option>
             <option value="Web Development">Web Development</option>
             <option value="Design">Design</option>
             <option value="Data Science">Data Science</option>
             <option value="Marketing">Marketing</option>
-            <option value="AI & Machine Learning">
-              AI & Machine Learning
-            </option>
+            <option value="AI & Machine Learning">AI & Machine Learning</option>
             <option value="Cloud Computing">Cloud Computing</option>
             <option value="Cybersecurity">Cybersecurity</option>
             <option value="App Development">App Development</option>

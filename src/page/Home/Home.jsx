@@ -3,6 +3,8 @@ import Hero from '../../Components/Hero/Hero';
 import axios from 'axios';
 import Loading from '../../Components/Loading/Loading';
 import CourseCard from '../../Components/CourseCard/CourseCard';
+import TopInstructor from '../../Components/TopInstructor/TopInstructor';
+import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 
 
 
@@ -37,7 +39,8 @@ const Home = () => {
     )}
   </div>
 </section>
-
+      <TopInstructor></TopInstructor>
+      <WhyChooseUs></WhyChooseUs>
 
             
         </div>

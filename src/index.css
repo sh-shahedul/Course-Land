@@ -8,6 +8,24 @@
 
 
 
+.navbar .active {
+  color: crimson;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid #cac8c8ff;
+  background: rgb(243, 226, 226);
+}
 
+.dark .navbar .active {
+  color: #ff5f5f;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth icon transition */
+.swap svg {
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
 
 
