@@ -1,15 +1,17 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { AuthContext } from '../../Provider/AuthContext';
+import toast from 'react-hot-toast';
 
 const CourseDetails = () => {
-   const [course, setCourse] = useState(null);
+   const [course, setCourse] = useState({});
    const [loading, setLoading] = useState(true);
     const{id}=useParams()
-    
+    const {user} = use(AuthContext)
   useEffect(() => {  
       axios.get(`http://localhost:3000/course/${id}`)
       .then((data) => {
@@ -21,6 +23,39 @@ const CourseDetails = () => {
         setLoading(false);
       });
   }, [id]);
+
+    const handelEnroll = ()=>{
+        const finalCourse = {
+          title:course.title,
+          imageURL:course.imageURL,
+          price: course.price,
+          duration:course.duration,
+          description:course.description,
+          created_by:course.created_by,
+          category:course.category,
+          created_at:new Date(),
+          isFeatured:course.isFeatured,
+          rating:course.rating,
+          instructor:course.instructor,
+          enrolled_by:user.email,
+
+        }
+
+        axios.post('http://localhost:3000/enrolled',finalCourse)
+          
+        .then(data=>{
+          console.log(data.data)
+          toast.success('enorll confirm course')
+        })
+        .catch((error)=>{
+          console.log('cannot enroll',error)
+        })
+    }
+
+
+
+
+
 
   if(loading){
     return <Loading></Loading>
@@ -94,6 +129,7 @@ const CourseDetails = () => {
         </div>
        <div className='flex justify-end gap-7'>
          <button
+            onClick={handelEnroll}
             className="bg-linear-to-br from-pink-500 via-purple-500 to-indigo-500 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
             Enroll Now
           </button>

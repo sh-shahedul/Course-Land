@@ -1,98 +1,182 @@
 import axios from "axios";
 import React, { use, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
+import Loading from "../../Components/Loading/Loading";
+import toast from "react-hot-toast";
 
 const AddCourse = () => {
   const {user}= use(AuthContext)
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
   const handelADDCourse =(e)=>{
       e.preventDefault()
+      setLoading(true);
      const title = e.target.title.value;
      const imageURL = e.target.imageURL.value;
      const price = e.target.price.value;
      const duration = e.target.duration.value;
      const category = e.target.category.value;
      const description = e.target.description.value;
+     const level = e.target.level.value;
+     const isFeatured = e.target.isFeatured.value === "true";
      console.log(title,imageURL,price,duration,category,description)
           
-       const newCourse = {title,imageURL,price,duration,category,description,
-        created_by:user.email , created_at: new Date()
+       const newCourse = {title,imageURL,price,duration,category,description, isFeatured,level,
+        created_by:user.email , instructor:user.displayName, created_at: new Date()
        }
       axios.post('http://localhost:3000/course',newCourse)
       .then(data=>{
         console.log('after saving data',data)
+        toast.success("Course added successfully 🎉");
+        e.target.reset();
+        
       })
+      .catch((err) => {
+        console.error("Error saving data:", err);
+        toast.error("Failed to add course 😢");
+      })
+      .finally(() => {
+        setLoading(false); // 
+      });
   }
+  
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h2 className="text-2xl font-bold mb-3 text-center">Add New Course</h2>
-      <div className="w-[200px] h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+<div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-3xl mt-10">
+  <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
+    Add New Course
+  </h2>
+  <div className="w-36 h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
 
-
-      <form onSubmit={handelADDCourse} className="space-y-4">
+  <form onSubmit={handelADDCourse} className="space-y-6">
+    {/* Instructor Info */}
+    <div className="flex items-center space-x-4 mb-4 bg-pink-50 p-4 rounded-xl shadow-inner">
+      {user?.photoURL && (
+        <img
+          src={user.photoURL}
+          alt="Instructor"
+          className="w-16 h-16 rounded-full border-2 border-pink-300 object-cover"
+        />
+      )}
+      <div className="flex-1 space-y-2">
         <input
           type="text"
-          name="title"
-          placeholder="Course Title"
-         className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-
-          required
+          name="instructor"
+          value={user?.displayName || ""}
+          readOnly
+          className="w-full px-4 py-2 border border-pink-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-700 font-semibold"
         />
-
         <input
-          type="text"
-          name="imageURL"
-          placeholder="Image URL"
-          className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-          required
+          type="email"
+          name="instructorEmail"
+          value={user?.email || ""}
+          readOnly
+          className="w-full px-4 py-2 border border-purple-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-700 font-semibold"
         />
-
-        <input
-          type="number"
-          name="price"
-          placeholder="Price ($)"
-          className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-          required
-        />
-
-        <input
-          type="text"
-          name="duration"
-          placeholder="Duration (e.g., 6 weeks)"
-          className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-          required
-        />
-
-        <input
-          type="text"
-          name="category"
-          placeholder="Category"
-         
-          className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-          required
-        />
-
-        <textarea
-          name="description"
-          placeholder="Description"
-          
-           className="w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold "
-          rows={4}
-          required
-        />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-2 bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold  hover:from-indigo-500 hover:to-pink-500 transition-colors duration-300 rounded-full"
-        >
-          {loading ? "Adding..." : "Add Course"}
-        </button>
-      </form>
-
-      {/* {success && <p className="mt-4 text-center text-green-600">{success}</p>} */}
+      </div>
     </div>
+
+    {/* Course Title & Price */}
+    <div className="flex flex-col md:flex-row gap-4">
+      <input
+        type="text"
+        name="title"
+        placeholder="Course Title"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        required
+      />
+      <input
+        type="number"
+        name="price"
+        placeholder="Price ($)"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        required
+      />
+    </div>
+
+    {/* Image URL & Duration */}
+    <div className="flex flex-col md:flex-row gap-4">
+      <input
+        type="text"
+        name="imageURL"
+        placeholder="Image URL"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        required
+      />
+      <input
+        type="text"
+        name="duration"
+        placeholder="Duration (e.g., 6 weeks)"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        required
+      />
+    </div>
+
+    {/* Level & Category */}
+    <div className="flex flex-col md:flex-row gap-4">
+      <select
+        name="level"
+        defaultValue="Level"
+        required
+        className="select flex-1  px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
+        <option>Select Level</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Beginner to Intermediate">Beginner to Intermediate</option>
+        <option value="Beginner to Advanced">Beginner to Advanced</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Intermediate to Advanced">Intermediate to Advanced</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+
+      <select
+        name="category"
+        defaultValue="Category"
+        required
+        className=" select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold">
+        <option>Select Category</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Design">Design</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Marketing">Marketing</option>
+        <option value="AI & Machine Learning">AI & Machine Learning</option>
+        <option value="Cloud Computing">Cloud Computing</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+        <option value="App Development">App Development</option>
+        <option value="Multimedia">Multimedia</option>
+        <option value="Photography">Photography</option>
+      </select>
+    </div>
+
+    {/* isFeatured */}
+    <select
+      defaultValue="isFeatured"
+      name="isFeatured"
+      required
+      className=" select w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
+      <option className="text-gray-400"> Is Featured </option>
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+
+    {/* Description */}
+    <textarea
+      name="description"
+      placeholder="Course Description"
+      rows={4}
+      className="w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+      required
+    />
+
+    {/* Submit Button */}
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full py-3 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 text-white font-bold hover:from-indigo-500 hover:to-pink-500 transition-colors duration-300 rounded-full shadow-lg"
+    >
+      {loading ? "Adding..." : "Add Course"}
+    </button>
+  </form>
+</div>
+
   );
 };
 

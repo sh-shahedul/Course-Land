@@ -45,8 +45,8 @@ const Courses = () => {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
+            {categories.map((cat,index) => (
+              <option key={index} value={cat}>
                 {cat}
               </option>
             ))}
@@ -63,7 +63,7 @@ const Courses = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course) => (
-              <CourseCard key={course.title} course={course} />
+              <CourseCard key={course._id} course={course} />
             ))}
           </div>
         )}
