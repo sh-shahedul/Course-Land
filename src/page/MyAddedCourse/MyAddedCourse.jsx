@@ -3,24 +3,73 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthContext';
 import Loading from '../../Components/Loading/Loading';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MyAddedCourse = () => {
   const { user } = useContext(AuthContext);
   const [myCourse, setMyCourse] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refetch, setRefetch] = useState(false)
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/course?email=${user.email}`)
-      .then((res) => {
-        setMyCourse(res.data);
+    axios.get(`http://localhost:3000/course?email=${user.email}`)
+      .then((data) => {
+        setMyCourse(data.data);
         setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching course data:', error);
         setLoading(false);
       });
-  }, [user]);
+  }, [user,refetch]);
+
+
+const handleDelete =(id)=>{
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+
+axios.delete(`http://localhost:3000/course/${id}`)
+  .then(data=>{
+    console.log('after delete data',data.data)
+
+     if(data.data.deletedCount){
+      Swal.fire({
+      title: "Deleted!",
+      text: "Your course has been deleted.",
+      icon: "success"
+       });
+     setRefetch(!refetch)
+      //  const filterCourse = user.filter( user =>user._id !== id)
+      //    myCourse(filterCourse)
+
+     }
+  })
+
+
+
+
+    
+  }
+});
+
+
+
+
+  
+  
+}
+
+
+
 
   if (loading) return <Loading />;
 
@@ -96,6 +145,7 @@ const MyAddedCourse = () => {
                 Update
               </Link>
               <button
+                onClick={() => handleDelete(course._id)}
                 className="px-3 py-1 bg-red-500 text-white rounded-full font-medium text-sm hover:bg-red-600 transition-colors duration-300"
               >
                 Delete
