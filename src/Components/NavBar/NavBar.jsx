@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
 import { IoIosArrowDown } from 'react-icons/io';
@@ -7,6 +7,18 @@ import toast from 'react-hot-toast';
 
 const Navbar = () => {
 const {user,signOutUser} =use(AuthContext)
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
 
 
 const handelSignOut =()=>{
@@ -21,46 +33,23 @@ const handelSignOut =()=>{
 
 
 const links = <>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/courses"
-                className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>
-                Courses
-              </NavLink>
-            </li>
+            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>  Home </NavLink></li>
+            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>  Courses </NavLink> </li>
     {
-        user &&     
+    user &&     
         <li className="dropdown dropdown-end">
-      <label
+       <label
         tabIndex={0}
-        className="flex items-center gap-1 px-4 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer"
-      >
-        Dashboard <IoIosArrowDown />
-      </label>
+        className="flex items-center gap-1 px-4 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer">
+         Dashboard <IoIosArrowDown />
+        </label>
       <ul
         tabIndex={0}
-        className="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
-      >
-        <li>
-          <NavLink to='/addCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> 
-            Add Course
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/myAddCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>
-            My Added Course
-          </NavLink>
-          <NavLink to='/myEnrollCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>
-            My Enrolled Course
-          </NavLink>
-        </li>
+        className="dropdown-content menu p-2 shadow bg-white rounded-box w-52">
+        <li> <NavLink to='/addCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> Add Course</NavLink></li>
+        <li> <NavLink to='/myAddCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> My Added Course </NavLink></li>
+        <li> <NavLink to='/myEnrollCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> My Enrolled Course</NavLink></li>
+        
       </ul>
     </li>
     }
@@ -116,7 +105,7 @@ const links = <>
         </div>
       )}
 
-      {/* ✅ Theme Toggle Button (between avatar & login/sign out) */}
+      {/* Theme Toggle Button */}
       <div>
         <input
           onChange={(e) => handleTheme(e.target.checked)}
