@@ -4,15 +4,15 @@ import Loading from "../../Components/Loading/Loading";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
-  const [categories, setCategories] = useState(["All"]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [categories, setCategories] = useState(["All Category"]);
+  const [selectedCategory, setSelectedCategory] = useState("All Category");
   const [loading, setLoading] = useState(true);
 
   
   useEffect(() => {
     setLoading(true);
     const url =
-      selectedCategory === "All"
+      selectedCategory === "All Category"
         ? "http://localhost:3000/course"
         : `http://localhost:3000/course?category=${encodeURIComponent(selectedCategory)}`;
 
@@ -21,8 +21,8 @@ const Courses = () => {
       .then((data) => {
         setCourses(data);
         
-        if (selectedCategory === "All") {
-          const uniqueCategories = ["All", ...Array.from(new Set(data.map((c) => c.category))),];
+        if (selectedCategory === "All Category") {
+          const uniqueCategories = ["All Category", ...Array.from(new Set(data.map((c) => c.category))),];
           setCategories(uniqueCategories);
         }
       })
@@ -33,15 +33,27 @@ const Courses = () => {
   return (
     <section className="py-16 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          All Courses
-        </h2>
+        <div className="max-w-6xl mx-auto px-4 text-center">
+    {/* Title */}
+    <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3">
+      All Courses
+    </h1>
+  <div className=" w-54 h-1 mx-auto bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 rounded-full"></div>
+    {/* Description */}
+    <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mt-4">
+      Explore our wide range of courses and find the perfect one to enhance your skills.  
+      Browse by category, instructor, and price to discover courses tailored for you.
+    </p>
+
+    {/* Optional Divider */}
+    
+  </div>
 
         {/* Category Dropdown */}
         <div className="mb-6 flex justify-between items-center w-[97%] mx-auto py-10">
-        <h1 className="text-3xl font-semibold">Categories : <span className="text-xl font-black text-pink-600">({courses.length})</span></h1>
+        <h1 className="text-3xl font-semibold">Courses : <span className="text-xl font-black text-pink-600">({courses.length})</span></h1>
           <select
-            className="w-full max-w-xs px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="select w-full max-w-xs px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >

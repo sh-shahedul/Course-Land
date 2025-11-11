@@ -35,21 +35,22 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="relative py-24 overflow-hidden">
-      <div className="relative container mx-auto px-4 text-center">
+    <div className="relative overflow-hidden">
+      <div className="relative container mx-auto px-4 text-center p-10">
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500">
+        <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-3"
+>
           Why Choose Us
         </h2>
 
         {/* Description */}
-        <p className="text-gray-600 max-w-2xl mx-auto mb-16 text-base md:text-lg leading-relaxed">
+        <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg mb-15 ">
           Experience next-level learning designed for dreamers and achievers. We combine innovation, creativity, and expert mentorship to guide you toward excellence.
         </p>
 
         {/* Center Line */}
         <div className="relative flex justify-center">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-pink-400 via-purple-500 to-indigo-500 h-full rounded-full"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-linear-to-b from-pink-400 via-purple-500 to-indigo-500 h-full rounded-full"></div>
 
           {/* Cards */}
           <div className="flex flex-col gap-10 relative z-10">

@@ -21,12 +21,11 @@ const instructor = [
 
 const TopInstructor = () => {
   return (
-    <section className="text-center py-16 px-4 bg-base-100">
-      <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-6">
+    <section className="text-center sm:py-16 px-4 bg-base-100">
+      <h2 className="text-3xl md:text-4xl font-bold text-pink-600 pb-4 ">
         Top Instructors
       </h2>
-
-      <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-base md:text-lg leading-relaxed">
+      <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-base md:text-lg leading-relaxed ">
         Our top instructors are professionals with years of teaching and industry
         experience. They are passionate about sharing their knowledge and helping
         students reach their highest potential. Learn from the best and master the

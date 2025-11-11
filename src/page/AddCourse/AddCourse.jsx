@@ -41,7 +41,7 @@ const AddCourse = () => {
   
 
   return (
-<div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-3xl mt-10">
+<div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10">
   <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
     Add New Course
   </h2>

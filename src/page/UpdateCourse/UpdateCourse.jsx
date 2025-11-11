@@ -97,36 +97,36 @@ const UpdateCourse = () => {
         <div className="flex flex-col md:flex-row gap-4">
           <select
             name="level"
-            defaultValue={update?.level}
+            // defaultValue={update?.level}
             required
             className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
             <option >Select Level</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Beginner to Intermediate"> Beginner to Intermediate</option>
-            <option value="Beginner to Advanced">Beginner to Advanced</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Intermediate to Advanced"> Intermediate to Advanced</option>
-            <option value="Advanced">Advanced</option>
+            <option selected={update?.level == "Beginner" } value="Beginner">Beginner</option>
+            <option selected={update?.level == "Beginner to Intermediate" } value="Beginner to Intermediate"> Beginner to Intermediate</option>
+            <option selected={update?.level == "Beginner to Advanced" }  value="Beginner to Advanced">Beginner to Advanced</option>
+            <option selected={update?.level == "Intermediate" }  value="Intermediate">Intermediate</option>
+            <option selected={update?.level == "Intermediate to Advanced" }  value="Intermediate to Advanced"> Intermediate to Advanced</option>
+            <option selected={update?.level == "Advanced"}  value="Advanced">Advanced</option>
           </select>
 
           <select
             name="category"
-            defaultValue={update?.category}
+            // defaultValue={update?.category}
             required
             className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
             <option >Select Category</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Design">Design</option>
-            <option value="Data Science">Data Science</option>
-            <option value="Marketing">Marketing</option>
-            <option value="AI & Machine Learning">AI & Machine Learning</option>
-            <option value="Cloud Computing">Cloud Computing</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-            <option value="App Development">App Development</option>
-            <option value="Multimedia">Multimedia</option>
-            <option value="Photography">Photography</option>
+            <option selected={update?.category == "Web Development" }  value="Web Development">Web Development</option>
+            <option selected={update?.category == "Design" } value="Design">Design</option>
+            <option selected={update?.category == "Data Science" } value="Data Science">Data Science</option>
+            <option selected={update?.category == "Marketing" } value="Marketing">Marketing</option>
+            <option selected={update?.category == "AI & Machine Learning" } value="AI & Machine Learning">AI & Machine Learning</option>
+            <option selected={update?.category == "Cloud Computing" } value="Cloud Computing">Cloud Computing</option>
+            <option selected={update?.category == "Cybersecurity" } value="Cybersecurity">Cybersecurity</option>
+            <option selected={update?.category =="App Development" } value="App Development">App Development</option>
+            <option selected={update?.category == "Multimedia" } value="Multimedia">Multimedia</option>
+            <option selected={update?.category == "Photography" } value="Photography">Photography</option>
           </select>
         </div>
 
