@@ -4,6 +4,9 @@ import logo from '../../assets/logo.png'
 import { IoIosArrowDown } from 'react-icons/io';
 import { AuthContext } from '../../Provider/AuthContext';
 import toast from 'react-hot-toast';
+import { FaHome } from 'react-icons/fa';
+import { TbLayoutDashboardFilled } from 'react-icons/tb';
+import { MdLibraryBooks } from 'react-icons/md';
 
 const Navbar = () => {
 const {user,signOutUser} =use(AuthContext)
@@ -36,8 +39,8 @@ const handelSignOut =()=>{
 
 
 const links = <>
-            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>  Home </NavLink></li>
-            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}>  Courses </NavLink> </li>
+            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}><FaHome />  Home </NavLink></li>
+            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> <MdLibraryBooks />  Courses </NavLink> </li>
 
     {
     user &&     
@@ -45,7 +48,7 @@ const links = <>
        <label
         tabIndex={0}
         className="flex items-center gap-1 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer">
-         Dashboard <IoIosArrowDown />
+      <TbLayoutDashboardFilled />  Dashboard <IoIosArrowDown />
         </label>
       <ul
         tabIndex={0}
@@ -63,7 +66,7 @@ const links = <>
 
   return (
 <div
-  className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 "
+  className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 rounded-b-2xl"
 >
   <div className="navbar max-xl:max-w-7xl max-lg:max-w-5xl max-md:max-w-3xl max-sm:max-w-screen-sm text-gray-800 w-[97%] mx-auto">
 
@@ -168,15 +171,14 @@ const links = <>
         {user ? (
           <button
             onClick={handelSignOut}
-            className="px-3 py-2 md:px-6 md:py-2 rounded-full bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold hover:from-indigo-500 hover:to-pink-500"
+            className="px-3 py-2 md:px-6 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  rounded-full hover:from-indigo-500 hover:to-pink-500"
           >
             Sign Out
           </button>
         ) : (
           <Link
             to="/login"
-           className="px-3 py-2 md:px-6 md:py-2 rounded-full bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-semibold hover:from-indigo-500 hover:to-pink-500"
-          >
+           className="px-3 py-2 md:px-6 rounded-full bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  hover:from-indigo-500 hover:to-pink-500">
             Login
           </Link>
         )}

@@ -5,23 +5,32 @@ import axios from 'axios';
 import CourseCard from '../../Components/CourseCard/CourseCard';
 import TopInstructor from '../../Components/TopInstructor/TopInstructor';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
+import Loading from '../../Components/Loading/Loading';
 
 
 
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
+  const [loading,setLoading] = useState(true)
 
     useEffect(() => {
     axios.get("http://localhost:3000/featuresCourse")
      .then(data=>{
         setCourses(data.data)
         console.log(data)
+        setLoading(false)
      })
       
   }, []);
+
+
+  if(loading){
+    return <Loading></Loading>
+  }
     return (
         <div>
+          <title>Home-CourseLand</title>
             <Hero></Hero>
 
       <section className="py-10 ">
@@ -36,7 +45,7 @@ const Home = () => {
 
 
     
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:p-0 p-2">
         {courses.map((course) =><CourseCard key={course._id} course={course}></CourseCard> )}
       </div>
  

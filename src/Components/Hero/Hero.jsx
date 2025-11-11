@@ -1,17 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import hero1 from "../../assets/hero1.jpg";
-import hero2 from "../../assets/hero2.jpg";
+import hero1 from "../../assets/public.jpg";
+import hero2 from "../../assets/mern.jpg";
 import hero3 from "../../assets/hero3.jpg";
 import hero4 from "../../assets/hero4.jpg";
-import hero5 from "../../assets/hero5.jpg";
+import hero5 from "../../assets/dgm.jpg";
+import { Link } from "react-router";
 
  const slides = [
   {
     image: hero1,
-    title: "Fullstack Web Development",
-    description: "Learn to build complete web applications from scratch. Master both frontend and backend development, and gain hands-on experience creating real-world projects."
+    title: "Public Speaking",
+    description: "Enhance your communication skills, overcome stage fear, and learn to deliver presentations confidently in front of any audience."
   },
   {
     image: hero2,
@@ -20,8 +21,8 @@ import hero5 from "../../assets/hero5.jpg";
   },
   {
     image: hero3,
-    title: "Public Speaking",
-    description: "Enhance your communication skills, overcome stage fear, and learn to deliver presentations confidently in front of any audience."
+    title: "Fullstack Web Development",
+    description: "Learn to build complete web applications from scratch. Master both frontend and backend development, and gain hands-on experience creating real-world projects"
   },
   {
     image: hero4,
@@ -51,7 +52,7 @@ export default function Hero() {
   }, [totalSlides]);
 
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center text-center text-white overflow-hidden mb-5">
+    <div className="relative w-full h-[500px] flex items-center justify-center text-center text-white overflow-hidden mb-5 rounded-2xl">
       {/* Slides container */}
       <div
         ref={containerRef}
@@ -61,7 +62,7 @@ export default function Hero() {
         {extendedSlides.map((slide, index) => (
           <div
             key={index}
-            className="relative min-w-full h-[500px] bg-center bg-cover"
+            className="relative min-w-full sm:h-[500px] bg-center bg-cover"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="absolute inset-0 bg-black/50"></div>
@@ -76,8 +77,8 @@ export default function Hero() {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: -20 }}
-  transition={{ duration: 0.8, delay: 0 }} 
-  className="text-3xl md:text-5xl font-bold mt-5 mb-8 text-blue-100 drop-shadow-lg title-font"
+  transition={{ duration: 0.8, delay: 0.2 }} 
+  className="text-3xl md:text-5xl font-bold mt-5 mb-8 text-blue-100 drop-shadow-[0_2px_4px_rgb(0,0,0,0.6)] title-font "
 >
   {slides[current].title}
 </motion.h1>
@@ -88,21 +89,25 @@ export default function Hero() {
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: -20 }}
   transition={{ duration: 0.8, delay: 0.2 }}
-  className="text-lg md:text-xl mb-6 text-gray-200 drop-shadow-md"
+  className="text-lg md:text-xl mb-6 text-gray-200 drop-shadow-[0_2px_4px_rgb(0,0,0,0.6)] "
 >
   {slides[current].description}
 </motion.p>
 
+<Link to='/courses'>
 <motion.button
   key={`btn-${current}`}
-  initial={{ opacity: 0, scale: 0.8 }}
-  animate={{ opacity: 1, scale: 1 }}
-  exit={{ opacity: 0, scale: 0.8 }}
+  // initial={{ opacity: 0, scale: 0.8 }}
+  // animate={{ opacity: 1, scale: 1 }}
+  // exit={{ opacity: 0, scale: 0.8 }}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
   transition={{ duration: 0.5, delay: 0.4 }} 
-  className=" border px-8 py-2 rounded-full mt-10 cursor-pointer 
-    bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 text-white font-medium hover:from-indigo-500 hover:to-pink-500">
+  className=" px-8 py-2 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  rounded-full hover:from-indigo-500 hover:to-pink-500">
   All Courses
 </motion.button>
+</Link>
     </div>
 
       {/* dot slider  */}

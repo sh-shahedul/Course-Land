@@ -45,16 +45,16 @@ const Footer = () => {
                         <p className="text-gray-300 mb-4"> Stay connected with us on social media and never miss an update! Follow us for the latest news, tips, and exciting course offers delivered straight to your feed.</p>
                         <div className="flex gap-5 text-white text-2xl mt-auto">
                             <Link to="https://x.com/sh_shahedul" target="_blank" rel="noopener noreferrer" className="hover:text-[#1DA1F2] transition-transform transform hover:scale-110">
-                                <FaXTwitter size={28} />
+                                <FaXTwitter className="text-xl sm:text-3xl" />
                             </Link>
                             <Link to="https://www.linkedin.com/in/sh-shahedul/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-transform transform hover:scale-110">
-                                <FaLinkedin size={28} />
+                                <FaLinkedin className="text-xl sm:text-3xl" />
                             </Link>
                             <Link to='https://www.instagram.com/sh.shahedul/' target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-transform transform hover:scale-110">
-                                <FaInstagram size={28} />
+                                <FaInstagram className="text-xl sm:text-3xl" />
                             </Link>
                             <Link to='https://www.facebook.com/shahedulhoquee/' target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-transform transform hover:scale-110">
-                                <FaFacebookF size={28} />
+                                <FaFacebookF className="text-xl sm:text-3xl"  />
                             </Link>
                         </div>
                     </div>

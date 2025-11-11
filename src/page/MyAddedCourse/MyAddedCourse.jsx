@@ -48,8 +48,7 @@ axios.delete(`http://localhost:3000/course/${id}`)
       icon: "success"
        });
      setRefetch(!refetch)
-      //  const filterCourse = user.filter( user =>user._id !== id)
-      //    myCourse(filterCourse)
+      
 
      }
   })
@@ -75,9 +74,10 @@ axios.delete(`http://localhost:3000/course/${id}`)
 
   return (
 <div className="w-full max-w-6xl mx-auto mt-10 px-2 sm:px-4">
+  <title>My-Added-Course-CourseLand</title>
   {myCourse.length === 0 && (
-    <div className="text-center text-gray-500 py-20 text-lg sm:text-xl font-medium">
-      No courses available
+    <div className='min-h-screen text-center col-span-full text-4xl flex justify-center items-center text-pink-600 font-bold'>
+       No courses added yet.
     </div>
   )}
 

@@ -42,6 +42,7 @@ const AddCourse = () => {
 
   return (
 <div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10">
+  <title>Add-Course-CourseLand</title>
   <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
     Add New Course
   </h2>

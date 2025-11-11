@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { AuthContext } from '../../Provider/AuthContext';
 import toast from 'react-hot-toast';
+import ErrorDetails from '../../Components/ErrorPage/ErrorDetails';
 
 const CourseDetails = () => {
    const [course, setCourse] = useState({});
    const [loading, setLoading] = useState(true);
+   const [error,setError]= useState(false)
     const{id}=useParams()
     const {user} = use(AuthContext)
   useEffect(() => {  
@@ -21,6 +23,7 @@ const CourseDetails = () => {
       .catch((error) => {
         console.error("Error fetching course:", error);
         setLoading(false);
+         setError(true)
       });
   }, [id]);
 
@@ -60,8 +63,12 @@ const CourseDetails = () => {
   if(loading){
     return <Loading></Loading>
   }
+  if(error||!course) {
+    return <ErrorDetails></ErrorDetails>
+  }
     return (
    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-10 px-3 sm:px-6">
+    <title>Courese-details-CourseLand</title>
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
