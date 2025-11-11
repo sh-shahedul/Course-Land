@@ -12,7 +12,9 @@ import MyEnrolledCourse from "../page/MyEnrolledCoursed/MyEnrolledCourse";
 import CourseDetails from "../page/CourseDetails/CourseDetails";
 import UpdateCourse from "../page/UpdateCourse/UpdateCourse";
 import Loading from "../Components/Loading/Loading";
-import ErrorDetails from "../Components/ErrorPage/ErrorDetails";
+import CourseErrorPage from "../Components/ErrorPage/CourseErrorPage";
+
+
 
 
 
@@ -21,7 +23,7 @@ export const router = createBrowserRouter([
      path: "/",
      Component:RootLayOut,
      hydrateFallbackElement:<Loading></Loading>,
-      errorElement:<ErrorDetails></ErrorDetails>,
+      errorElement:<CourseErrorPage></CourseErrorPage>,
      children:[
         {
             index:true,
