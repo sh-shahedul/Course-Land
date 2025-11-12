@@ -32,20 +32,20 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-bl from-indigo-200 via-purple-200 to-pink-200">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-md text-center">
-        <h2 className="text-2xl font-bold text-orange-500 mb-2">
+    <div className="min-h-screen flex items-center justify-center ">
+      <div className="border border-white shadow-2xl rounded-3xl p-8 w-full max-w-md text-center">
+        <h2 className='text-2xl font-semibold text-center pb-5 bg-linear-to-r from-pink-500 via-purpel-500 to-indigo-600 text-transparent bg-clip-text'>
           Forgot Password?
         </h2>
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-500 dark:text-gray-300  mb-6">
           Enter your email address and we’ll send you a password reset link.
         </p>
 
         <form onSubmit={handleReset} className="space-y-4">
           <input
             type="email"
-            placeholder="Enter your email"
-            className="input input-bordered w-full focus:outline-none focus:border-pink-400"
+            placeholder="Enter your email "
+            className="input input-bordered w-full focus:outline-none focus:border-pink-400 rounded-full  dark:placeholder-gray-300"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -54,8 +54,7 @@ const ForgotPassword = () => {
 
           <button
             type="submit"
-            className="btn w-full bg-linear-to-r from-orange-400 to-pink-500 text-white hover:scale-105 transform transition-all duration-300"
-          >
+             className="w-full text-center bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium py-2 rounded-full hover:from-indigo-500 hover:to-pink-500 transition-all duration-300">
             Reset Password
           </button>
         </form>

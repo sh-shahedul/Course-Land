@@ -49,16 +49,16 @@ const AddCourse = () => {
   }
 
   return (
-<div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10">
-  <title>Add-Course-CourseLand</title>
+<div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl my-20 border border-white   ">
+  <title>Add Course | CourseLand</title>
   <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
     Add New Course
   </h2>
-  <div className="w-36 h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+  <div className="w-46 h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
 
   <form onSubmit={handelADDCourse} className="space-y-6">
     {/* Instructor Info */}
-    <div className="flex items-center space-x-4 mb-4 bg-pink-50 p-4 rounded-xl shadow-inner">
+    <div className="flex items-center space-x-4 mb-4 bg-pink-50 dark:bg-gray-500 p-4 rounded-xl shadow-inner">
       {user?.photoURL && (
         <img
           src={user.photoURL}
@@ -72,14 +72,14 @@ const AddCourse = () => {
           name="instructor"
           value={user?.displayName || ""}
           readOnly
-          className="w-full px-4 py-2 border border-pink-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-700 font-semibold"
+          className="w-full px-4 py-2 border border-pink-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-600 dark:text-gray-50 font-semibold"
         />
         <input
           type="email"
           name="instructorEmail"
           value={user?.email || ""}
           readOnly
-          className="w-full px-4 py-2 border border-purple-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-700 font-semibold"
+          className="w-full px-4 py-2 border border-purple-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-600 dark:text-gray-50 font-semibold "
         />
       </div>
     </div>
@@ -90,14 +90,14 @@ const AddCourse = () => {
         type="text"
         name="title"
         placeholder="Course Title"
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-600 font-semibold  dark:text-gray-300 dark:placeholder-gray-300"
         required
       />
       <input
         type="number"
         name="price"
         placeholder="Price Taka"
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:placeholder-gray-300"
         required
       />
     </div>
@@ -108,14 +108,14 @@ const AddCourse = () => {
         type="text"
         name="imageURL"
         placeholder="Image URL"
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:placeholder-gray-300"
         required
       />
       <input
         type="text"
         name="duration"
         placeholder="Duration (e.g., 6 weeks)"
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:placeholder-gray-300"
         required
       />
     </div>
@@ -126,7 +126,7 @@ const AddCourse = () => {
         name="level"
         defaultValue="Level"
         required
-        className="select flex-1  px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
+        className="select flex-1  px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:text-gray-300" >
         <option>Select Level</option>
         <option value="Beginner">Beginner</option>
         <option value="Beginner to Intermediate">Beginner to Intermediate</option>
@@ -140,7 +140,7 @@ const AddCourse = () => {
         name="category"
         defaultValue="Category"
         required
-        className=" select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold">
+        className=" select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:text-gray-300">
         <option>Select Category</option>
         <option value="Web Development">Development</option>
         <option value="Tech & Data">Tech & Data</option>
@@ -157,7 +157,7 @@ const AddCourse = () => {
       defaultValue="isFeatured"
       name="isFeatured"
       required
-      className=" select w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
+      className=" select w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:text-gray-300" >
       <option className="text-gray-400"> Is Featured </option>
       <option value="true">true</option>
       <option value="false">false</option>
@@ -168,7 +168,7 @@ const AddCourse = () => {
       name="description"
       placeholder="Course Description"
       rows={4}
-      className="w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+      className="w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold  dark:text-gray-300  dark:placeholder-gray-300"
       required
     />
 

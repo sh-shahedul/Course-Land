@@ -40,14 +40,14 @@ const Home = () => {
     <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-6 text-center">
       Popular Courses
     </h2>
-      <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-base md:text-lg   text-center">
+      <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 text-base md:text-lg   text-center">
       Explore our most sought-after courses and level up your skills with top-rated content.  
       Carefully curated to ensure quality learning and maximum impact, these courses are perfect for anyone ready to grow.
     </p>
 
 
     
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:p-0 p-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5">
         {courses.map((course) =><CourseCard key={course._id} course={course}></CourseCard> )}
       </div>
  

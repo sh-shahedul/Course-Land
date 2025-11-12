@@ -50,21 +50,22 @@ const UpdateCourse = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white shadow-2xl rounded-3xl mt-10">
-      <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
+    <div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10 border border-white my-15 ">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-pink-600">
         Update Your Course
       </h2>
-      <div className="w-36 h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+      <div className="w-56 h-1 mx-auto mb-10 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
 
       <form onSubmit={handelUpdate} className="space-y-6">
         {/* Course Title & Price */}
+        
         <div className="flex flex-col md:flex-row gap-4">
           <input
             defaultValue={update?.title}
             type="text"
             name="title"
             placeholder="Course Title"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="flex-1 px-4 py-2 border dark:text-gray-300 border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
             required
           />
           <input
@@ -72,7 +73,7 @@ const UpdateCourse = () => {
             type="number"
             name="price"
             placeholder="Price ($)"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="flex-1 px-4 py-2 border  border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
             required
           />
         </div>
@@ -84,7 +85,7 @@ const UpdateCourse = () => {
             type="text"
             name="imageURL"
             placeholder="Image URL"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
             required
           />
           <input
@@ -92,7 +93,7 @@ const UpdateCourse = () => {
             type="text"
             name="duration"
             placeholder="Duration (e.g., 6 weeks)"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
             required
           />
         </div>
@@ -103,7 +104,7 @@ const UpdateCourse = () => {
             name="level"
             // defaultValue={update?.level}
             required
-            className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="select flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
             <option >Select Level</option>
             <option selected={update?.level == "Beginner" } value="Beginner">Beginner</option>
@@ -118,7 +119,7 @@ const UpdateCourse = () => {
             name="category"
             // defaultValue={update?.category}
             required
-            className="select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+            className="select flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
             <option >Select Category</option>
             <option selected={update?.category == "Web Development" }  value="Web Development">Web Development</option>
@@ -139,7 +140,7 @@ const UpdateCourse = () => {
           name="isFeatured"
           defaultValue={update?.isFeatured ? "true" : "false"}
           required
-          className="select w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+          className="select w-full px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
         >
           <option disabled>Is Featured</option>
           <option value="true">true</option>
@@ -152,7 +153,7 @@ const UpdateCourse = () => {
           name="description"
           placeholder="Course Description"
           rows={4}
-          className="w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
+          className="w-full px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           required
         />
 

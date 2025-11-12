@@ -14,7 +14,7 @@ const LogIn = () => {
    const[error,setError]=useState('')
    const [email, setEmail] = useState("");
     const navigate = useNavigate()
-   const[show,setShow]=useState(false)
+   const [show,setShow]=useState(false)
     
   const {signinUser,googleUser} =use(AuthContext)
    const location = useLocation()    
@@ -32,10 +32,6 @@ const LogIn = () => {
             setError('Something error!')
            })
     }
-
-
-
-
    const handelLogin=(e)=>{
      e.preventDefault()
         const form = e.target
@@ -62,44 +58,43 @@ const LogIn = () => {
         setShow(!show)
       }
        return (
-        <div className='flex justify-center min-h-screen items-center bg-linear-to-bl from-indigo-200 via-purple-200 to-pink-200 '>
-             <div className="card bg-white/35 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className='flex justify-center min-h-screen items-center'>
+             <div className="card border border-white w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-
             <form onSubmit={handelLogin}>
                 <fieldset className="fieldset">
           <h2 className='text-2xl font-semibold text-center py-6 bg-linear-to-r from-pink-500 via-purpel-500 to-indigo-600 text-transparent bg-clip-text'>Login your account</h2>
           {/* email  */}
-         <label className="label text-gray-800 font-semibold">Email Address</label>
+         <label className="label text-gray-600 dark:text-gray-300 font-semibold">Email Address</label>
 
           <input 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email" 
           name='email' 
-          className="input w-full border border-pink-400 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-pink-500 px-4"
+          className="input w-full border border-pink-400 placeholder-gray-400 dark:placeholder-gray-300 focus:outline-none focus:ring-0 focus:border-pink-500 px-4 rounded-full"
             placeholder="Email" />
-           <label className="label text-gray-800 font-semibold">Password</label>
+           <label className="label text-gray-600 dark:text-gray-300 font-semibold">Password</label>
                    <div className='relative'>
                      <input 
                      type={show? 'text':'password'} 
                      name='password' 
-                     className="input w-full border border-pink-400 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-pink-500 px-4"
+                     className="input w-full border border-pink-400 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-pink-500 px-4 dark:placeholder-gray-300 rounded-full "
                      placeholder="Password" />         
-                     <p onClick={()=>handelShow(!show)} className='absolute top-3 right-8 cursor-pointer'>{show?<PiEyeBold size={18}/>:<TbEyeClosed size={18}/>}</p>
+                     <p onClick={()=>handelShow(!show)} className='absolute top-3 right-5 cursor-pointer'>{show?<PiEyeBold size={18}/>:<TbEyeClosed size={18}/>}</p>
                    </div>
-          <div><Link to=''  state={{ email: email }} type='button' className="link link-hover font-bold">Forgot password?</Link></div>
+          <div><Link to='/forgotpass'  state={{ email: email }} type='button' className="link link-hover font-bold">Forgot password?</Link></div>
            {
             error &&  <h1 className='text-red-600 font-medium'>{error}</h1>
           }
           {
             success &&  <h1 className='text-green-600 font-medium'>{success}</h1>
           }
-          <button type='submit' className="text-white mt-2 font-bold px-4 py-2 rounded-2xl bg-linear-to-br from-pink-500 via-purple-600 to-indigo-400 hover:from-indigo-500 hover:to-pink-500 transition-all duration-300 focus:outline-none cursor-pointer">LogIn</button>       
+          <button type='submit' className="w-full text-center bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium py-2 rounded-full hover:from-indigo-500 hover:to-pink-500 transition-all duration-300 mt-2">LogIn</button>       
                  </fieldset>
             </form>
                <p className='divider'>OR</p>
-                <button onClick={handelGoogleLogin} className="btn w-full btn-outline border-pink-400 text-pink-500 hover:bg-white hover:border-border-500 flex items-center justify-center gap-2 transition">
+                <button onClick={handelGoogleLogin} className="btn w-full btn-outline border-pink-400 text-pink-500 hover:bg-white hover:border-border-500 flex items-center justify-center gap-2 transition rounded-full">
                 <FcGoogle size={18} />Login with Google </button>
               <p className='font-semibold text-center py-3'>Dont’t Have An Account ? <Link to='/register' className='text-secondary underline'>Register</Link></p>
       </div>

@@ -12,13 +12,19 @@ const RootLayOut = () => {
 
 
                 
-                <NavBar></NavBar>
+                { navigation?.state === 'loading' ? <Loading></Loading> : <>
+                    <NavBar></NavBar>
                 <div className='flex-1  '>
-                    {
+                    {/* {
                     navigation?.state  === 'loading' ? <Loading></Loading> :<Outlet></Outlet>
-                    }
+                    
+                    } */}
+                    <Outlet></Outlet>
                 </div>
                 <Footer></Footer>
+                </>
+                    
+                }
 
 
 

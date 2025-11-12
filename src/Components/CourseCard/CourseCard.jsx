@@ -14,7 +14,7 @@ const CourseCard = ({course}) => {
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true, amount: 0.3 }}
   transition={{ duration: 0.1, ease: "easeOut" }}
-  className="relative flex flex-col bg-white/10 backdrop-blur-md shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 h-full"
+  className="relative flex flex-col border border-white backdrop-blur-md shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 h-full"
 >
   {/* Image Section */}
   <figure className="relative rounded-t-xl overflow-hidden h-64 sm:h-72">
@@ -35,7 +35,7 @@ const CourseCard = ({course}) => {
   {/* Content */}
   <div className="p-5 flex flex-col flex-1 justify-between min-h-[280px]">
     <div>
-      <h3 className="text-xl font-semibold mb-2 text-gray-800">{course.title}</h3>
+      <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-300">{course.title}</h3>
 
       <span className="inline-block bg-pink-100 text-pink-600 text-xs px-2 py-1 rounded-full mb-3">
         {course.category}
@@ -59,8 +59,7 @@ const CourseCard = ({course}) => {
     {/* View Details Button */}
     <Link
       to={`/details/${course._id}`}
-      className="w-full text-center bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium py-2 rounded-full hover:from-indigo-500 hover:to-pink-500 transition-all duration-300"
-    >
+      className="w-full text-center bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium py-2 rounded-full hover:from-indigo-500 hover:to-pink-500 transition-all duration-300">
       View Details
     </Link>
   </div>

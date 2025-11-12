@@ -11,12 +11,10 @@ const Courses = () => {
   
   useEffect(() => {
     setLoading(true);
-    const url =
-      selectedCategory === "All Category"
+    const url = selectedCategory === "All Category"
         ? "https://online-learning-platform-server-livid.vercel.app/course"
         : `https://online-learning-platform-server-livid.vercel.app/course?category=${encodeURIComponent(selectedCategory)}`;
-
-    fetch(url)
+     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
@@ -32,7 +30,7 @@ const Courses = () => {
 
   return (
     <section className="py-16  min-h-screen w-[97%] mx-auto">
-      <title>All-courses-CourseLand</title>
+      <title>All courses | CourseLand</title>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto px-4 text-center">
     {/* Title */}
@@ -41,7 +39,7 @@ const Courses = () => {
     </h1>
   <div className=" w-54 h-1 mx-auto bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 rounded-full"></div>
     {/* Description */}
-    <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mt-4">
+    <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-3xl mx-auto mt-4">
       Explore our wide range of courses and find the perfect one to enhance your skills.  
       Browse by category, instructor, and price to discover courses tailored for you.
     </p>
@@ -51,19 +49,18 @@ const Courses = () => {
   </div>
 
         {/* Category Dropdown */}
-       <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center w-[97%] mx-auto py-10 gap-4 sm:gap-0">
-  <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800">
-    Courses :{" "}
-    <span className="text-lg sm:text-xl font-black text-pink-600">
-      ({courses.length})
+  <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center w-[97%] mx-auto py-10 gap-4 sm:gap-0">
+  <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-300">
+    Courses : &nbsp;
+     <span className="text-lg sm:text-xl font-black text-pink-600">
+       ({courses.length})
     </span>
   </h1>
 
   <select
-    className="select w-full sm:max-w-xs px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-700 font-medium"
+    className="select w-full sm:max-w-xs px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 text-gray-700 dark:text-gray-300 font-medium"
     value={selectedCategory}
-    onChange={(e) => setSelectedCategory(e.target.value)}
-  >
+    onChange={(e) => setSelectedCategory(e.target.value)}>
     {categories.map((cat, index) => (
       <option key={index} value={cat}>
         {cat}
@@ -74,7 +71,7 @@ const Courses = () => {
         {loading ? (
          <Loading></Loading>
         ) : courses.length === 0 ? (
-          <p className="text-center text-gray-500">
+          <p className="text-center text-pink-500 sm:text-3xl text-2xl min-h-screen flex justify-center items-center">
             No courses found in this category.
           </p>
         ) : (

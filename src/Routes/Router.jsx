@@ -21,9 +21,11 @@ import CourseErrorPage from "../Components/ErrorPage/CourseErrorPage";
 export const router = createBrowserRouter([
   {
      path: "/",
-      hydrateFallbackElement:<Loading></Loading>,
+      
      Component:RootLayOut,
+    
       errorElement:<CourseErrorPage></CourseErrorPage>,
+      hydrateFallbackElement:<Loading></Loading>,
      children:[
         {
             index:true,

@@ -54,11 +54,6 @@ const CourseDetails = () => {
         })
     }
 
-
-
-
-
-
   if(loading){
     return <Loading></Loading>
   }
@@ -66,15 +61,14 @@ const CourseDetails = () => {
     return <ErrorDetails></ErrorDetails>
   }
     return (
-   <div className="min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-indigo-50 py-10 px-3 sm:px-6">
+   <div className="min-h-screen  py-10 px-3 sm:px-6">
     <title>Courese details | CourseLand</title>
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, ease: "easeOut" }}
-    className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row"
-  >
-    {/* Left Section - Image */}
+    className="max-w-6xl mx-auto  rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-white">
+    {/* Left Section  */}
     <div className="relative w-full lg:w-1/2">
       <img
         src={course.imageURL}
@@ -82,17 +76,17 @@ const CourseDetails = () => {
         className="w-full h-[260px] sm:h-[360px] lg:h-full object-cover"
       />
       {course.isFeatured && (
-        <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-lg">
+        <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-xl">
           Featured
         </div>
       )}
     </div>
 
-    {/* Right Section - Content */}
+    {/* Right Section */}
     <div className="flex-1 p-5 sm:p-8 md:p-10 flex flex-col justify-between">
-      {/* Course Header */}
+     
       <div>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">
+        <h1 className="text-2xl  md:text-3xl font-bold text-gray-900 dark:text-gray-300 mb-3 md:mb-5">
           {course.title}
         </h1>
 
@@ -108,7 +102,7 @@ const CourseDetails = () => {
           </span>
         </div>
 
-        <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-10">
+        <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-10">
           {course.description}
         </p>
 
@@ -118,7 +112,7 @@ const CourseDetails = () => {
             {course.instructor?.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="text-gray-800 font-semibold text-sm sm:text-lg">
+            <p className="text-gray-800 dark:text-gray-300 font-semibold text-sm sm:text-lg">
               Instructor
             </p>
             <p className="text-pink-600 font-bold text-base sm:text-xl">
@@ -134,8 +128,9 @@ const CourseDetails = () => {
       {/* Price & Buttons */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 sm:gap-6">
         <p className="text-2xl sm:text-3xl font-extrabold text-indigo-700 tracking-wide">
-          ${course.price}
+          {course.price} ৳
         </p>
+        
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
           <button

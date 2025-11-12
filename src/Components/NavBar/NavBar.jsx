@@ -8,7 +8,6 @@ import { FaHome } from 'react-icons/fa';
 import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import { MdLibraryBooks } from 'react-icons/md';
 import { CiLogout } from 'react-icons/ci';
-import { Bold } from 'lucide-react';
 import { FiLogIn } from 'react-icons/fi';
 
 const Navbar = () => {
@@ -23,12 +22,6 @@ const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const handleTheme = (checked) => {
     setTheme(checked ? "dark" : "light");
   };
-
-
-
-
-
-
 
 const handelSignOut =()=>{
         signOutUser()
