@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { Link } from 'react-router';
 import { FaClock, FaDollarSign, FaUser } from 'react-icons/fa';
+import { IoTimeOutline } from 'react-icons/io5';
+import { FcOvertime } from 'react-icons/fc';
 const CourseCard = ({course}) => {
     return (
         <div>
@@ -40,18 +42,17 @@ const CourseCard = ({course}) => {
       </span>
 
       {/* Price */}
-      <p className="flex items-center mb-2 font-bold text-pink-500">
-        <span className="mr-1 text-xl font-black">💰</span> {course.price} <span className='ml-1 text-base font-black'>৳</span>
+      <p className="flex items-center mb-2 font-medium ">💰 Course Fee :  &nbsp; <span className="mr-1 text-base text-pink-600">{course.price}৳</span> <span className='ml-1 text-base font-black'></span>
       </p>
 
       {/* Duration */}
-      <p className="flex items-center mb-2 font-medium text-blue-500">
-        <span className="mr-2 text-lg">⏱</span> {course.duration}
+      <p className="flex items-center mb-2 font-medium ">
+      <FcOvertime size={20} /> &nbsp; Duration : &nbsp; <span className='text-indigo-600'> {course.duration}</span>
       </p>
 
       {/* Instructor */}
-      <p className="flex items-center mb-4 font-medium text-purple-500">
-        <FaUser className="mr-2" size={16} /> {course.instructor}
+      <p className="flex items-center mb-4 font-medium ">
+        👨‍🏫 Instructor: &nbsp; <span className='text-purple-600'>{course.instructor}</span>
       </p>
     </div>
 

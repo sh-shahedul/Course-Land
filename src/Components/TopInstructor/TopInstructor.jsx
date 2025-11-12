@@ -21,7 +21,7 @@ const instructor = [
 
 const TopInstructor = () => {
   return (
-    <section className="text-center sm:py-16 px-4 bg-base-100">
+    <section className="text-center sm:py-16 px-4 ">
       <h2 className="text-3xl md:text-4xl font-bold text-pink-600 pb-4 ">
         Top Instructors
       </h2>

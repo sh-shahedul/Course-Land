@@ -3,7 +3,6 @@ import React, { use, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import { AuthContext } from '../../Provider/AuthContext';
 import toast from 'react-hot-toast';
 import ErrorDetails from '../../Components/ErrorPage/ErrorDetails';
@@ -15,7 +14,7 @@ const CourseDetails = () => {
     const{id}=useParams()
     const {user} = use(AuthContext)
   useEffect(() => {  
-      axios.get(`http://localhost:3000/course/${id}`)
+      axios.get(`https://online-learning-platform-server-livid.vercel.app/course/${id}`)
       .then((data) => {
         setCourse(data.data);
         setLoading(false);
@@ -44,7 +43,7 @@ const CourseDetails = () => {
 
         }
 
-        axios.post('http://localhost:3000/enrolled',finalCourse)
+        axios.post('https://online-learning-platform-server-livid.vercel.app/enrolled',finalCourse)
           
         .then(data=>{
           console.log(data.data)
@@ -67,8 +66,8 @@ const CourseDetails = () => {
     return <ErrorDetails></ErrorDetails>
   }
     return (
-   <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-10 px-3 sm:px-6">
-    <title>Courese-details-CourseLand</title>
+   <div className="min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-indigo-50 py-10 px-3 sm:px-6">
+    <title>Courese details | CourseLand</title>
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
@@ -83,7 +82,7 @@ const CourseDetails = () => {
         className="w-full h-[260px] sm:h-[360px] lg:h-full object-cover"
       />
       {course.isFeatured && (
-        <div className="absolute top-4 left-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-lg">
+        <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-lg">
           Featured
         </div>
       )}

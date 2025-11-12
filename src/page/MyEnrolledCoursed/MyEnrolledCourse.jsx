@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthContext';
 import Loading from '../../Components/Loading/Loading';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 
 const MyEnrolledCourse = () => {
   const { user } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const MyEnrolledCourse = () => {
 
   useEffect(() => {
     // if (!user?.email) return;
-    axios(`http://localhost:3000/enrolled?email=${user.email}`)
+    axios(`https://online-learning-platform-server-livid.vercel.app/enrolled?email=${user.email}`)
       .then(data => {
         console.log('after enrolled', data.data);
         setEnroll(data.data);
@@ -38,7 +39,7 @@ const MyEnrolledCourse = () => {
         {enroll.map((course, index) => (
           <div
             key={index}
-            className='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100'
+            className=' rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100'
           >
             <img
               src={course.imageURL}
@@ -67,7 +68,7 @@ const MyEnrolledCourse = () => {
 
               <div className='flex justify-between items-center text-gray-700 font-medium pt-2'>
                 <p>⏱ {course.duration}</p>
-                <p>💰 ${course.price}</p>
+                <p className='flex justify-center items-center'>💰 {course.price} <FaBangladeshiTakaSign /></p>
               </div>
 
               <div className='border-t pt-3 text-sm text-gray-500'>

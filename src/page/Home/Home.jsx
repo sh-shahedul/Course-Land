@@ -6,6 +6,7 @@ import CourseCard from '../../Components/CourseCard/CourseCard';
 import TopInstructor from '../../Components/TopInstructor/TopInstructor';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 import Loading from '../../Components/Loading/Loading';
+import Achivement from '../../Components/Achivement/Achivement';
 
 
 
@@ -13,9 +14,10 @@ import Loading from '../../Components/Loading/Loading';
 const Home = () => {
   const [courses, setCourses] = useState([]);
   const [loading,setLoading] = useState(true)
+  
 
     useEffect(() => {
-    axios.get("http://localhost:3000/featuresCourse")
+    axios.get("https://online-learning-platform-server-livid.vercel.app/featuresCourse")
      .then(data=>{
         setCourses(data.data)
         console.log(data)
@@ -53,7 +55,8 @@ const Home = () => {
 </section>
       <TopInstructor></TopInstructor>
       <WhyChooseUs></WhyChooseUs>
-
+      
+      <Achivement></Achivement>
             
         </div>
     );

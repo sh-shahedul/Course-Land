@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router";
 
 const UpdateCourse = () => {
   const { id } = useParams();
   const [update, setUpdate] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   // 🔹 Fetch existing course data
   useEffect(() => {
-     axios.get(`http://localhost:3000/course/${id}`)
+     axios.get(`https://online-learning-platform-server-livid.vercel.app/course/${id}`)
     .then(data => {
       console.log("Fetched data:", data.data)
       setUpdate(data.data)
@@ -33,10 +35,12 @@ const UpdateCourse = () => {
 
     const updateCourse = {title,imageURL,price,duration,category,description,level,isFeatured, };
 
-    axios.patch(`http://localhost:3000/course/${id}`, updateCourse)
+    axios.patch(`https://online-learning-platform-server-livid.vercel.app/course/${id}`, updateCourse)
       .then((data) => {
         console.log("After update:", data.data);
         setUpdate(data.data);
+       toast.success("🎉 Update Successful!");
+       navigate('/myAddCourse')
       
       })
       .catch((err) => console.error("Update Error:", err))

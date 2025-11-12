@@ -4,6 +4,7 @@ import { AuthContext } from '../../Provider/AuthContext';
 import Loading from '../../Components/Loading/Loading';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 
 const MyAddedCourse = () => {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,11 @@ const MyAddedCourse = () => {
   const [refetch, setRefetch] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/course?email=${user.email}`)
+    axios.get(`https://online-learning-platform-server-livid.vercel.app/course?email=${user.email}`,{
+      headers:{
+        authorization:`Bearer ${user.accessToken}`
+      }
+    })
       .then((data) => {
         setMyCourse(data.data);
         setLoading(false);
@@ -37,7 +42,7 @@ Swal.fire({
   if (result.isConfirmed) {
 
 
-axios.delete(`http://localhost:3000/course/${id}`)
+axios.delete(`https://online-learning-platform-server-livid.vercel.app/course/${id}`)
   .then(data=>{
     console.log('after delete data',data.data)
 
@@ -132,8 +137,8 @@ axios.delete(`http://localhost:3000/course/${id}`)
               </td>
 
               {/* Price */}
-              <td className="px-4 py-3 text-pink-600 font-semibold whitespace-nowrap">
-                {course.price} TK
+              <td className=" text-pink-600 font-semibold whitespace-nowrap">
+               <span className='flex justify-center items-center'> {course.price} <FaBangladeshiTakaSign size={14} /></span>
               </td>
 
               {/* Actions */}

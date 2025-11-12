@@ -7,6 +7,9 @@ import toast from 'react-hot-toast';
 import { FaHome } from 'react-icons/fa';
 import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import { MdLibraryBooks } from 'react-icons/md';
+import { CiLogout } from 'react-icons/ci';
+import { Bold } from 'lucide-react';
+import { FiLogIn } from 'react-icons/fi';
 
 const Navbar = () => {
 const {user,signOutUser} =use(AuthContext)
@@ -171,14 +174,13 @@ const links = <>
         {user ? (
           <button
             onClick={handelSignOut}
-            className="px-3 py-2 md:px-6 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  rounded-full hover:from-indigo-500 hover:to-pink-500"
-          >
+            className=" flex items-center gap-1 px-3 py-2 md:px-4 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  rounded-full hover:from-indigo-500 hover:to-pink-500"><CiLogout/>
             Sign Out
           </button>
         ) : (
           <Link
             to="/login"
-           className="px-3 py-2 md:px-6 rounded-full bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  hover:from-indigo-500 hover:to-pink-500">
+           className="flex items-center gap-1 px-3 py-2 md:px-4 rounded-full bg-linear-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-medium  hover:from-indigo-500 hover:to-pink-500"><FiLogIn/>
             Login
           </Link>
         )}

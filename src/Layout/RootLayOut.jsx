@@ -8,9 +8,12 @@ const RootLayOut = () => {
     const navigation = useNavigation()
     return (
         <div>
-             <div className='flex flex-col min-h-screen max-w-screen-2xl mx-auto'>
+             <div className='flex flex-col min-h-screen max-w-screen-2xl mx-auto bg-base-200'>
+
+
+                
                 <NavBar></NavBar>
-                <div className='flex-1 '>
+                <div className='flex-1  '>
                     {
                     navigation?.state  === 'loading' ? <Loading></Loading> :<Outlet></Outlet>
                     }

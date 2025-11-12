@@ -88,7 +88,7 @@ const LogIn = () => {
                      placeholder="Password" />         
                      <p onClick={()=>handelShow(!show)} className='absolute top-3 right-8 cursor-pointer'>{show?<PiEyeBold size={18}/>:<TbEyeClosed size={18}/>}</p>
                    </div>
-          <div><Link to='/forgotpass'  state={{ email: email }} type='button' className="link link-hover font-bold">Forgot password?</Link></div>
+          <div><Link to=''  state={{ email: email }} type='button' className="link link-hover font-bold">Forgot password?</Link></div>
            {
             error &&  <h1 className='text-red-600 font-medium'>{error}</h1>
           }

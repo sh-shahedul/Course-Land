@@ -9,7 +9,7 @@ const AddCourse = () => {
   const [loading,setLoading] = useState(false);
   const handelADDCourse =(e)=>{
       e.preventDefault()
-      setLoading(true);
+      
      const title = e.target.title.value;
      const imageURL = e.target.imageURL.value;
      const price = e.target.price.value;
@@ -23,9 +23,13 @@ const AddCourse = () => {
        const newCourse = {title,imageURL,price,duration,category,description, isFeatured,level,
         created_by:user.email , instructor:user.displayName, created_at: new Date()
        }
-      axios.post('http://localhost:3000/course',newCourse)
+        setLoading(true);
+
+      axios.post('https://online-learning-platform-server-livid.vercel.app/course',newCourse)
       .then(data=>{
         console.log('after saving data',data)
+        setLoading(false);
+
         toast.success("Course added successfully 🎉");
         e.target.reset();
         
@@ -33,12 +37,16 @@ const AddCourse = () => {
       .catch((err) => {
         console.error("Error saving data:", err);
         toast.error("Failed to add course 😢");
+        
       })
       .finally(() => {
-        setLoading(false); // 
+        setLoading(false);
       });
   }
-  
+   
+  if(loading){
+    return<Loading></Loading>
+  }
 
   return (
 <div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10">
@@ -88,7 +96,7 @@ const AddCourse = () => {
       <input
         type="number"
         name="price"
-        placeholder="Price ($)"
+        placeholder="Price Taka"
         className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
         required
       />
@@ -134,15 +142,12 @@ const AddCourse = () => {
         required
         className=" select flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold">
         <option>Select Category</option>
-        <option value="Web Development">Web Development</option>
-        <option value="Design">Design</option>
-        <option value="Data Science">Data Science</option>
+        <option value="Web Development">Development</option>
+        <option value="Tech & Data">Tech & Data</option>
         <option value="Marketing">Marketing</option>
-        <option value="AI & Machine Learning">AI & Machine Learning</option>
-        <option value="Cloud Computing">Cloud Computing</option>
-        <option value="Cybersecurity">Cybersecurity</option>
-        <option value="App Development">App Development</option>
-        <option value="Multimedia">Multimedia</option>
+        <option value="Design">Design</option>
+        <option value="Language Learning">Language Learning</option>
+        <option value="Health & Fitness">Health & Fitness</option>
         <option value="Photography">Photography</option>
       </select>
     </div>
@@ -171,8 +176,7 @@ const AddCourse = () => {
     <button
       type="submit"
       disabled={loading}
-      className="w-full py-3 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 text-white font-bold hover:from-indigo-500 hover:to-pink-500 transition-colors duration-300 rounded-full shadow-lg"
-    >
+      className="w-full py-3 bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 text-white font-bold hover:from-indigo-500 hover:to-pink-500 transition-colors duration-300 rounded-full shadow-lg">
       {loading ? "Adding..." : "Add Course"}
     </button>
   </form>

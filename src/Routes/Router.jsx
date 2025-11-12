@@ -21,13 +21,13 @@ import CourseErrorPage from "../Components/ErrorPage/CourseErrorPage";
 export const router = createBrowserRouter([
   {
      path: "/",
+      hydrateFallbackElement:<Loading></Loading>,
      Component:RootLayOut,
-     hydrateFallbackElement:<Loading></Loading>,
       errorElement:<CourseErrorPage></CourseErrorPage>,
      children:[
         {
             index:true,
-            Component:Home
+            Component:Home,
         },
         {
             path:'courses',

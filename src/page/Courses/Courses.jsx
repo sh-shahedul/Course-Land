@@ -13,8 +13,8 @@ const Courses = () => {
     setLoading(true);
     const url =
       selectedCategory === "All Category"
-        ? "http://localhost:3000/course"
-        : `http://localhost:3000/course?category=${encodeURIComponent(selectedCategory)}`;
+        ? "https://online-learning-platform-server-livid.vercel.app/course"
+        : `https://online-learning-platform-server-livid.vercel.app/course?category=${encodeURIComponent(selectedCategory)}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -46,7 +46,7 @@ const Courses = () => {
       Browse by category, instructor, and price to discover courses tailored for you.
     </p>
 
-    {/* Optional Divider */}
+    
     
   </div>
 
@@ -68,12 +68,9 @@ const Courses = () => {
       <option key={index} value={cat}>
         {cat}
       </option>
-    ))}
-  </select>
-</div>
-
-
-        
+       ))}
+       </select>
+     </div>
         {loading ? (
          <Loading></Loading>
         ) : courses.length === 0 ? (
