@@ -9,7 +9,7 @@ const UpdateCourse = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
-  // 🔹 Fetch existing course data
+  
   useEffect(() => {
      axios.get(`https://online-learning-platform-server-livid.vercel.app/course/${id}`)
     .then(data => {
@@ -19,7 +19,7 @@ const UpdateCourse = () => {
     .catch(err => console.error("Fetch Error:", err));
 }, [id]);
 
-  //  update form 
+   
   const handelUpdate = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,10 +51,11 @@ const UpdateCourse = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl mt-10 border border-white my-15 ">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-pink-600">
+      <title>Update Course | CourseLand</title>
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-pink-600 ">
         Update Your Course
       </h2>
-      <div className="w-56 h-1 mx-auto mb-10 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+     
 
       <form onSubmit={handelUpdate} className="space-y-6">
         {/* Course Title & Price */}

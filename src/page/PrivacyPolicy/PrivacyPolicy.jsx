@@ -5,13 +5,13 @@ import { Link } from "react-router";
 const PrivacyPolicy = () => {
   return (
     <section className="relative overflow-hidden py-20 px-6">
-      {/* Header */}
+      <title>Privacy Policy | courseland</title>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.7 }}
         className="text-center max-w-4xl mx-auto relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-pink-600 mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-6">
           Privacy Policy
         </h2>
         <p className="text-gray-600 dark:text-gray-300 text-lg ">

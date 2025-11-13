@@ -12,14 +12,14 @@ const ContactUs = () => {
 
   return (
     <section className="relative overflow-hidden py-20 px-6">
-    
+     <title>Contact Us | courseland</title>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, x: 0 }}  
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         className="text-center mb-16 relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-pink-600">
+        <h2 className="text-3xl md:text-4xl  font-bold text-pink-600">
           Get In Touch
         </h2>
         <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mt-4 ">

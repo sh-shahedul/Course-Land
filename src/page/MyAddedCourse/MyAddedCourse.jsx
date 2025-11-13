@@ -63,7 +63,7 @@ const MyAddedCourse = () => {
   return (
     <div className="w-full max-w-6xl mx-auto mt-10 px-2 sm:px-4">
       <title>My Added Course | CourseLand</title>
-      <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-pink-600">
         My Added Course
       </h2>
       <div className="overflow-x-auto shadow-lg rounded-2xl border border-gray-200 my-15">

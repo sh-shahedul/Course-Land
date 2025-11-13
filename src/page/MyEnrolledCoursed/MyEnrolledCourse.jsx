@@ -24,7 +24,7 @@ const MyEnrolledCourse = () => {
   return (
     <div className='min-h-screen  py-15 w-[97%] mx-auto'>
       <title>My Enrolle Course | CourseLand</title>
-      <h1 className="text-2xl md:text-3xl font-bold text-pink-600 mb-15 text-center">
+      <h1 className="text-3xl md:text-4xl font-bold text-pink-600 mb-15 text-center">
          My Enrolled Courses
       </h1>
 

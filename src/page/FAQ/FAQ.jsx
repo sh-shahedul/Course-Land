@@ -31,8 +31,9 @@ const FAQ = () => {
 
   return (
     <section className="py-16 px-6 bg-gray-50 dark:bg-gray-900 ">
+        <title>FAQs | courseland</title>
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-pink-600 mb-8 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-pink-600 mb-8 text-center">
           Frequently Asked Questions
         </h2>
 

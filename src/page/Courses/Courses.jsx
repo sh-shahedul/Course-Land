@@ -34,10 +34,10 @@ const Courses = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto px-4 text-center">
     {/* Title */}
-    <h1 className="text-3xl sm:text-4xl font-bold  mb-3 text-pink-600">
+    <h1 className="text-3xl md:text-4xl font-bold  mb-3 text-pink-600">
       All Courses
     </h1>
-  <div className=" w-54 h-1 mx-auto bg-linear-to-r from-pink-500 via-purple-600 to-indigo-400 rounded-full"></div>
+ 
     {/* Description */}
     <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-3xl mx-auto mt-4">
       Explore our wide range of courses and find the perfect one to enhance your skills.  

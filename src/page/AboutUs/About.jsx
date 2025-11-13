@@ -22,7 +22,8 @@ const About = () => {
             ]
   return (
     <section className="relative overflow-hidden py-20 px-6 ">
-      {/* Header */}
+
+      <title>About us | courseland</title>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,8 +47,7 @@ const About = () => {
          animate={{ opacity: 1, y: 0 }} 
         transition={{ delay: 0.3, duration: 0.8 }}
         viewport={{ once: true }}
-        className="mt-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10"
-      >
+        className="mt-20 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10"   >
         <div>
           <Rocket className="w-14 h-14 text-pink-500 mb-4" />
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 mb-3">

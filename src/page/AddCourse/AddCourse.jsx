@@ -52,10 +52,10 @@ const AddCourse = () => {
   return (
 <div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl my-20 border border-white   ">
   <title>Add Course | CourseLand</title>
-  <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">
+  <h2 className="text-3xl font-bold mb-7 text-center text-pink-600">
     Add New Course
   </h2>
-  <div className="w-46 h-1 mx-auto my-4 rounded-full bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+  
 
   <form onSubmit={handelADDCourse} className="space-y-6">
     {/* Instructor Info */}
