@@ -13,6 +13,10 @@ import CourseDetails from "../page/CourseDetails/CourseDetails";
 import UpdateCourse from "../page/UpdateCourse/UpdateCourse";
 import Loading from "../Components/Loading/Loading";
 import CourseErrorPage from "../Components/ErrorPage/CourseErrorPage";
+import AboutUs from "../page/AboutUs/About";
+import ContactUs from "../page/ContactUs/ContactUs";
+import PrivacyPolicy from "../page/PrivacyPolicy/PrivacyPolicy";
+import FAQ from "../page/FAQ/FAQ";
 
 
 
@@ -47,6 +51,22 @@ export const router = createBrowserRouter([
             path:'forgotpass',
             Component:ForgotPassword,
 
+        },
+        {
+          path:'about',
+          Component:AboutUs,
+        },
+        {
+          path:'contact',
+          Component:ContactUs,
+        },
+        {
+          path:'privacy',
+          Component:PrivacyPolicy,
+        },
+        {
+          path:'faq',
+          Component:FAQ,
         },
         {
          path:'/details/:id',

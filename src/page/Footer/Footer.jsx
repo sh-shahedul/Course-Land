@@ -9,28 +9,29 @@ const Footer = () => {
             <div className="max-w-screen-2xl mx-auto px-6 sm:px-10 lg:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-                    {/* About + Resources */}
                     <div className='space-y-6'>
-                        <img className='sm:w-40 w-28' src={logo} alt="" />
-                        <p className="text-gray-300">
+                       <Link to='/'> <img className='sm:w-40 w-28' src={logo} alt="" /></Link>
+                        <p className="text-gray-300 mt-2">
                             CourseLand is your hub to explore, learn, and grow. Discover top courses, connect with instructors, and achieve your learning goals in a fun and interactive way.
                         </p>
                         <div className="grid grid-cols-2 gap-6">
                             <div>
                                 <h4 className="text-lg font-semibold mb-2 text-pink-600">Resources</h4>
                                 <ul className="space-y-2 text-gray-300">
-                                <li className="hover:text-pink-600 cursor-pointer transition-colors">Help Center</li>
-                                <li className="hover:text-pink-600 cursor-pointer transition-colors">Privacy Policy</li>
+                               
+                                <li><Link to='/privacy' className="hover:text-pink-600 cursor-pointer transition-colors">Privacy Policy</Link></li>
+                                <li><Link to='/faq' className="hover:text-pink-600 cursor-pointer transition-colors">FAQs</Link></li>
+                                 <li className="hover:text-pink-600 cursor-pointer transition-colors">Help Center</li>
                                 <li className="hover:text-pink-600 cursor-pointer transition-colors">Terms of Service</li>
                                 <li className="hover:text-pink-600 cursor-pointer transition-colors">Blog</li>
-                                <li className="hover:text-pink-600 cursor-pointer transition-colors">FAQs</li>
+                          
                                 </ul>
                             </div>
                             <div>
                                 <h4 className="text-lg font-semibold mb-2 text-pink-600">Company</h4>
                                 <ul className="space-y-2 text-gray-300">
-                                    <li className="hover:text-pink-600 cursor-pointer transition-colors">About Us</li>
-                                    <li className="hover:text-pink-600 cursor-pointer transition-colors">Contact</li>
+                                   <li><Link to='/about' className="hover:text-pink-600 cursor-pointer transition-colors">About Us</Link></li>
+                                    <li><Link to='/contact' className="hover:text-pink-600 cursor-pointer transition-colors">Contact</Link></li>
                                     <li className="hover:text-pink-600 cursor-pointer transition-colors">Careers</li>
                                     <li className="hover:text-pink-600 cursor-pointer transition-colors">Press</li>
                                     <li className="hover:text-pink-600 cursor-pointer transition-colors">Partnerships</li>

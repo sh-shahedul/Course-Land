@@ -12,7 +12,8 @@
 
 Check out the live version of **Course Land** here:  
 
-[🔗 Visit Live Site](https://your-live-site-url.com)
+[🔗 Visit Live Site Netlify](https://courselandplat.netlify.app)
+[🔗 Visit Live Site Firebase](https://course-land-b6150.web.app)
 
 
 ---
@@ -120,12 +121,18 @@ src/
 │ 
 │
 ├── pages/
+│ ├── AboutUs/
+│ │ └── About.jsx
 │ ├── AddCourse/
 │ │ └── AddCourse.jsx
+│ ├── ContactUs/
+│ │ └── ContactUs.jsx
 │ ├── CourseDetails/
 │ │ └── CourseDetails.jsx
 │ ├── Courses/
 │ │ └── Courses.jsx
+│ ├── FAQ/
+│ │ └── FAQ.jsx
 │ ├── Footer/
 │ │ └── Footer.jsx
 │ ├── Home/
@@ -136,6 +143,8 @@ src/
 │ │ └── MyAddedCourses.jsx
 │ ├── MyEnrolledCourses/
 │ │ └── MyEnrolledCourses.jsx
+│ ├── PrivacyPolicy/
+│ │ └── PrivacyPolicy.jsx
 │ ├── Register/
 │ │ └── Register.jsx
 │ ├── UpdateCourse/

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { use, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
 import { motion } from "framer-motion";
 import { AuthContext } from '../../Provider/AuthContext';
@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import ErrorDetails from '../../Components/ErrorPage/ErrorDetails';
 
 const CourseDetails = () => {
+  const navigate = useNavigate();
    const [course, setCourse] = useState({});
    const [loading, setLoading] = useState(true);
    const [error,setError]= useState(false)
@@ -47,10 +48,10 @@ const CourseDetails = () => {
           
         .then(data=>{
           console.log(data.data)
-          toast.success('enorll confirm course')
+          toast.success("Enroll Successful 🎉");
         })
         .catch((error)=>{
-          console.log('cannot enroll',error)
+          console.log('enroll fail',error)
         })
     }
 
@@ -69,14 +70,14 @@ const CourseDetails = () => {
     transition={{ duration: 0.8, ease: "easeOut" }}
     className="max-w-6xl mx-auto  rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-white">
     {/* Left Section  */}
-    <div className="relative w-full lg:w-1/2">
+    <div className="relative w-full lg:w-1/2 p-5 sm:p-8 md:p-10">
       <img
         src={course.imageURL}
         alt={course.title}
-        className="w-full h-[260px] sm:h-[360px] lg:h-full object-cover"
+        className="w-full h-[260px] sm:h-[460px] rounded-2xl  object-cover  "
       />
       {course.isFeatured && (
-        <div className="absolute top-4 left-4 bg-linear-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-xl">
+        <div className="absolute top-14 left-14 bg-linear-to-r from-pink-600 to-purple-600 text-white px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-full shadow-xl">
           Featured
         </div>
       )}
@@ -139,12 +140,12 @@ const CourseDetails = () => {
             Enroll Now
           </button>
 
-          <Link
-            to="/"
-            className="px-3 py-2 md:px-6  rounded-full font-semibold border-2 border-indigo-500 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 text-center"
-          >
-            Back To Home
-          </Link>
+          <button
+            
+             onClick={() => navigate(-1)}
+            className="px-3 py-2 md:px-6  rounded-full font-semibold border-2 border-indigo-500 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 text-center" >
+               Go Back
+          </button>
         </div>
       </div>
     </div>

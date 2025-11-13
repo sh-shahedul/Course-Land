@@ -3,6 +3,7 @@ import React, { use, useState } from "react";
 import { AuthContext } from "../../Provider/AuthContext";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
+import instructorLogo from "../../assets/user.png";
 
 const AddCourse = () => {
   const {user}= use(AuthContext)
@@ -59,13 +60,11 @@ const AddCourse = () => {
   <form onSubmit={handelADDCourse} className="space-y-6">
     {/* Instructor Info */}
     <div className="flex items-center space-x-4 mb-4 bg-pink-50 dark:bg-gray-500 p-4 rounded-xl shadow-inner">
-      {user?.photoURL && (
-        <img
-          src={user.photoURL}
-          alt="Instructor"
-          className="w-16 h-16 rounded-full border-2 border-pink-300 object-cover"
-        />
-      )}
+     <img
+    referrerPolicy="no-referrer"
+    src={user?.photoURL ? user.photoURL : instructorLogo}
+    alt="Instructor Avatar"
+    className="w-16 h-16 rounded-full border-2 border-pink-300 object-cover"/>
       <div className="flex-1 space-y-2">
         <input
           type="text"

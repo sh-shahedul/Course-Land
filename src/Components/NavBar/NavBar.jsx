@@ -9,6 +9,7 @@ import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import { MdLibraryBooks } from 'react-icons/md';
 import { CiLogout } from 'react-icons/ci';
 import { FiLogIn } from 'react-icons/fi';
+import userLogo from '../../assets/user.png'
 
 const Navbar = () => {
 const {user,signOutUser} =use(AuthContext)
@@ -127,7 +128,7 @@ const links = <>
           <img
           referrerPolicy='no-referrer'
             className="w-9 h-9 rounded-full"
-            src={user.photoURL}
+            src={user.photoURL||userLogo}
             alt="User Image"
           />
         </div>

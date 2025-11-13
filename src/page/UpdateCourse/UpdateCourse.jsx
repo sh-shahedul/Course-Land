@@ -102,7 +102,7 @@ const UpdateCourse = () => {
         <div className="flex flex-col md:flex-row gap-4">
           <select
             name="level"
-            // defaultValue={update?.level}
+           
             required
             className="select flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
           >
@@ -115,36 +115,31 @@ const UpdateCourse = () => {
             <option selected={update?.level == "Advanced"}  value="Advanced">Advanced</option>
           </select>
 
-          <select
-            name="category"
-            // defaultValue={update?.category}
+           <select
+            name="category"          
             required
-            className="select flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
-          >
+            className="select flex-1 px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
             <option >Select Category</option>
-            <option selected={update?.category == "Web Development" }  value="Web Development">Web Development</option>
-            <option selected={update?.category == "Design" } value="Design">Design</option>
-            <option selected={update?.category == "Data Science" } value="Data Science">Data Science</option>
+            <option selected={update?.category == "Development" }  value=" Development">Development</option>
+            <option selected={update?.category == "Tech & Data" } value="Tech & Data">Tech & Data</option>
             <option selected={update?.category == "Marketing" } value="Marketing">Marketing</option>
-            <option selected={update?.category == "AI & Machine Learning" } value="AI & Machine Learning">AI & Machine Learning</option>
-            <option selected={update?.category == "Cloud Computing" } value="Cloud Computing">Cloud Computing</option>
-            <option selected={update?.category == "Cybersecurity" } value="Cybersecurity">Cybersecurity</option>
-            <option selected={update?.category =="App Development" } value="App Development">App Development</option>
-            <option selected={update?.category == "Multimedia" } value="Multimedia">Multimedia</option>
+            <option selected={update?.category == "Design" } value="Design">Design</option>
+            <option selected={update?.category == "Language Learning" } value="Language Learning">Language Learning</option>
+            <option selected={update?.category == "Health & Fitness" } value="Health & Fitness">Health & Fitness</option>
             <option selected={update?.category == "Photography" } value="Photography">Photography</option>
-          </select>
+          </select> 
         </div>
 
         {/* isFeatured */}
         <select
           name="isFeatured"
-          defaultValue={update?.isFeatured ? "true" : "false"}
+          value={update?.isFeatured === true || update?.isFeatured === "true" ? "true" : "false"} 
+          onChange={(e) => setUpdate({ ...update, isFeatured: e.target.value })}
           required
-          className="select w-full px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold"
-        >
+          className="select w-full px-4 py-2 border border-gray-300 dark:text-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 text-gray-700 font-semibold" >
           <option disabled>Is Featured</option>
-          <option value="true">true</option>
-          <option value="false">false</option>
+          <option selected={update?.isFeatured == "true" } value="true">true</option>
+          <option selected={update?.isFeatured == "false" } value="false">false</option>
         </select>
 
         {/* Description */}
