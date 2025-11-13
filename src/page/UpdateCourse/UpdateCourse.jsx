@@ -13,7 +13,7 @@ const UpdateCourse = () => {
   useEffect(() => {
      axios.get(`https://online-learning-platform-server-livid.vercel.app/course/${id}`)
     .then(data => {
-      console.log("Fetched data:", data.data)
+      // console.log("Fetched data:", data.data)
       setUpdate(data.data)
     })
     .catch(err => console.error("Fetch Error:", err));

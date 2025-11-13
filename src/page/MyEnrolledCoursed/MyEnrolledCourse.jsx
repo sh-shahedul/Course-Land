@@ -12,7 +12,7 @@ const MyEnrolledCourse = () => {
   useEffect(() => {
     axios(`https://online-learning-platform-server-livid.vercel.app/enrolled?email=${user.email}`)
       .then(data => {
-        console.log('after enrolled', data.data);
+        // console.log('after enrolled', data.data);
         setEnroll(data.data);
         setLoading(false)
       });

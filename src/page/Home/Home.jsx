@@ -20,7 +20,7 @@ const Home = () => {
     axios.get("https://online-learning-platform-server-livid.vercel.app/featuresCourse")
      .then(data=>{
         setCourses(data.data)
-        console.log(data)
+        // console.log(data)
         setLoading(false)
      })
       

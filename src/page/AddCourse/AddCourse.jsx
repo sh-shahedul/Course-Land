@@ -19,7 +19,7 @@ const AddCourse = () => {
      const description = e.target.description.value;
      const level = e.target.level.value;
      const isFeatured = e.target.isFeatured.value === "true";
-     console.log(title,imageURL,price,duration,category,description)
+    //  console.log(title,imageURL,price,duration,category,description)
           
        const newCourse = {title,imageURL,price,duration,category,description, isFeatured,level,
         created_by:user.email , instructor:user.displayName, created_at: new Date()
