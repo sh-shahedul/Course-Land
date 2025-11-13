@@ -35,23 +35,23 @@ const handelSignOut =()=>{
 
 
 const links = <>
-            <li><NavLink to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}><FaHome />  Home </NavLink></li>
-            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> <MdLibraryBooks />  Courses </NavLink> </li>
+            <li><NavLink  to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}><FaHome />  Home </NavLink></li>
+            <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <MdLibraryBooks />  Courses </NavLink> </li>
 
     {
     user &&     
         <li className="dropdown dropdown-end">
        <label
         tabIndex={0}
-        className="flex items-center gap-1 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer">
+        className="flex items-center gap-1 py-2 rounded-md text-gray-700 hover:text-pink-600 hover:bg-purple-100 cursor-pointer dark:text-gray-300">
       <TbLayoutDashboardFilled />  Dashboard <IoIosArrowDown />
         </label>
       <ul
         tabIndex={0}
-        className="dropdown-content menu p-2 shadow bg-white rounded-box w-52">
-        <li> <NavLink to='/addCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> Add Course</NavLink></li>
-        <li> <NavLink to='/myAddCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> My Added Course </NavLink></li>
-        <li> <NavLink to='/myEnrollCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold" : ""}> My Enrolled Course</NavLink></li>
+        className="dropdown-content menu p-2 shadow bg-white dark:bg-black rounded-box w-52">
+        <li> <NavLink to='/addCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> Add Course</NavLink></li>
+        <li> <NavLink to='/myAddCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> My Added Course </NavLink></li>
+        <li> <NavLink to='/myEnrollCourse' className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> My Enrolled Course</NavLink></li>
         
       </ul>
     </li>
@@ -61,14 +61,14 @@ const links = <>
 
 
   return (
-<div className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 rounded-b-2xl">
+<div className="sticky top-0 z-50  bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200  dark:from-black dark:via-black dark:to-black rounded-b-2xl">
   <div className="navbar max-xl:max-w-7xl max-lg:max-w-5xl max-md:max-w-3xl max-sm:max-w-screen-sm text-gray-800 w-[97%] mx-auto">
 
     {/* Left */}
     <div className="navbar-start">
       <div className="dropdown">
         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-gray-700 -ml-4">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 dark:text-gray-300" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
               d="M4 6h16M4 12h8m-8 6h16" />
@@ -76,7 +76,7 @@ const links = <>
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-blue-200 backdrop-blur-md rounded-box w-52">
+          className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-blue-200 dark:bg-black  backdrop-blur-md rounded-box w-52">
           {links}
            <div className='flex items-start justify-start ml-2'>
        <label className="swap swap-rotate">
@@ -96,7 +96,7 @@ const links = <>
 
   {/* moon icon */}
   <svg
-    className="swap-on h-6 w-6 fill-current "
+    className="swap-on h-6 w-6 fill-current dark:text-gray-300 "
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path
@@ -138,11 +138,11 @@ const links = <>
   {/* this hidden checkbox controls the state */}
   <input
    onChange={(e) => handleTheme(e.target.checked)}
-  type="checkbox" className="theme-controller" value="synthwave" />
+  type="checkbox" className="theme-controller " value="synthwave" />
 
   {/* sun icon */}
   <svg
-    className="swap-off h-8 w-8 fill-current"
+    className="swap-off h-8 w-8 fill-current "
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path
@@ -151,7 +151,7 @@ const links = <>
 
   {/* moon icon */}
   <svg
-    className="swap-on h-8 w-8 fill-current"
+    className="swap-on h-8 w-8 fill-current dark:text-gray-300"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24">
     <path

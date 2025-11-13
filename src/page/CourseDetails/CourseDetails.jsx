@@ -86,7 +86,7 @@ const CourseDetails = () => {
     <div className="flex-1 p-5 sm:p-8 md:p-10 flex flex-col justify-between">
      
       <div>
-        <h1 className="text-2xl  md:text-3xl font-bold text-gray-900 dark:text-gray-300 mb-3 md:mb-5">
+        <h1 className="text-xl  md:text-3xl font-bold text-gray-900 dark:text-gray-300 mb-3 md:mb-5">
           {course.title}
         </h1>
 
