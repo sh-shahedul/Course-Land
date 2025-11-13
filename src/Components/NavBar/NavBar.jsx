@@ -61,9 +61,7 @@ const links = <>
 
 
   return (
-<div
-  className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 rounded-b-2xl"
->
+<div className="sticky top-0 z-50 bg-linear-to-br from-pink-200 via-purple-200 to-indigo-200 rounded-b-2xl">
   <div className="navbar max-xl:max-w-7xl max-lg:max-w-5xl max-md:max-w-3xl max-sm:max-w-screen-sm text-gray-800 w-[97%] mx-auto">
 
     {/* Left */}
@@ -110,7 +108,7 @@ const links = <>
       </div>
 
       {/* Logo */}
-      <img className='sm:w-40 w-28' src={logo} alt="" />
+      <Link to='/'><img className='sm:w-40 w-28' src={logo} alt="" /></Link>
     </div>
 
     {/* Center */}
