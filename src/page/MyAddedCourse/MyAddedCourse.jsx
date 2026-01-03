@@ -146,7 +146,7 @@ const MyAddedCourse = () => {
                       View
                     </Link>
                     <Link
-                      to={`/updateCourse/${course._id}`}
+                      to={`/dashboard/updateCourse/${course._id}`}
                       className="px-2 sm:px-3 py-1 bg-green-500 text-white rounded-full text-xs sm:text-sm font-medium hover:bg-green-600">
                       Update
                     </Link>

@@ -17,6 +17,8 @@ import AboutUs from "../page/AboutUs/About";
 import ContactUs from "../page/ContactUs/ContactUs";
 import PrivacyPolicy from "../page/PrivacyPolicy/PrivacyPolicy";
 import FAQ from "../page/FAQ/FAQ";
+import Blog from "../page/Blog/Blog";
+import Dashboardlayout from "../Layout/Dashboardlayout";
 
 
 
@@ -50,7 +52,6 @@ export const router = createBrowserRouter([
         {
             path:'forgotpass',
             Component:ForgotPassword,
-
         },
         {
           path:'about',
@@ -69,29 +70,57 @@ export const router = createBrowserRouter([
           Component:FAQ,
         },
         {
+          path:'blog',
+          Component:Blog,
+        },
+        {
          path:'/details/:id',
-         element:<PrivateRouter><CourseDetails></CourseDetails></PrivateRouter>,
+         element:<CourseDetails></CourseDetails>
         
          
         },
-        {
-          path:'addCourse',
-          element:<PrivateRouter><AddCourse></AddCourse></PrivateRouter>
-        },
-        {
-          path:'myAddCourse',
-          element:<PrivateRouter><MyAddedCourse></MyAddedCourse></PrivateRouter>
-        },
-        {
-         path:'/updateCourse/:id',
-         element:<PrivateRouter><UpdateCourse></UpdateCourse></PrivateRouter>
-        },
-        {
-          path:'myEnrollCourse',
-          element:<PrivateRouter><MyEnrolledCourse></MyEnrolledCourse></PrivateRouter>
-        }
+        // {
+        //   path:'addCourse',
+        //   element:<PrivateRouter><AddCourse></AddCourse></PrivateRouter>
+        // },
+        // {
+        //   path:'myAddCourse',
+        //   element:<PrivateRouter><MyAddedCourse></MyAddedCourse></PrivateRouter>
+        // },
+        // {
+        //  path:'/updateCourse/:id',
+        //  element:<PrivateRouter><UpdateCourse></UpdateCourse></PrivateRouter>
+        // },
+        // {
+        //   path:'myEnrollCourse',
+        //   element:<PrivateRouter><MyEnrolledCourse></MyEnrolledCourse></PrivateRouter>
+        // }
        
         
      ]
   },
+  {
+     path:'dashboard',
+    HydrateFallback:<Loading></Loading>,
+    element:<PrivateRouter><Dashboardlayout></Dashboardlayout></PrivateRouter>,
+    children: [
+      {
+        path:'myEnrollCourse',
+        Component:MyEnrolledCourse,
+     
+      },
+              {
+          path:'addCourse',
+          element:<AddCourse></AddCourse>
+        },
+        {
+          path:'myAddCourse',
+          element:<MyAddedCourse></MyAddedCourse>
+        },
+        {
+         path:'updateCourse/:id',
+         element:<UpdateCourse></UpdateCourse>
+        },
+    ]
+  }
 ]);

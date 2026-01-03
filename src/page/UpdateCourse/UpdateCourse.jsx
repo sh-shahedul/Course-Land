@@ -40,7 +40,7 @@ const UpdateCourse = () => {
         console.log("After update:", data.data);
         setUpdate(data.data);
        toast.success("🎉 Update Successful!");
-       navigate('/myAddCourse')
+       navigate('/dashboard/myAddCourse')
       
       })
       .catch((err) => console.error("Update Error:", err))

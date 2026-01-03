@@ -50,16 +50,16 @@ const AddCourse = () => {
   }
 
   return (
-<div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl my-20 border border-white   ">
+<div className="max-w-4xl mx-auto p-8 shadow-2xl rounded-3xl my-20 border border-white bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10   ">
   <title>Add Course | CourseLand</title>
   <h2 className="text-3xl font-bold mb-7 text-center text-pink-600">
     Add New Course
   </h2>
   
 
-  <form onSubmit={handelADDCourse} className="space-y-6">
+  <form onSubmit={handelADDCourse} className="space-y-6 ">
     {/* Instructor Info */}
-    <div className="flex items-center space-x-4 mb-4 bg-pink-50 dark:bg-gray-500 p-4 rounded-xl shadow-inner">
+    <div className="flex items-center space-x-4 mb-4 bg-pink-100 dark:bg-gray-500 p-4 rounded-xl shadow-inner">
      <img
     referrerPolicy="no-referrer"
     src={user?.photoURL ? user.photoURL : instructorLogo}
