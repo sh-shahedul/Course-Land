@@ -7,6 +7,8 @@ import TopInstructor from '../../Components/TopInstructor/TopInstructor';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 import Loading from '../../Components/Loading/Loading';
 import Achivement from '../../Components/Achivement/Achivement';
+import HowItWorks from '../../Components/HowItWorks/HowitWorks';
+import Testimonials from '../../Components/Testimonials/Testimonials';
 
 
 
@@ -55,8 +57,9 @@ const Home = () => {
 </section>
       <TopInstructor></TopInstructor>
       <WhyChooseUs></WhyChooseUs>
-      
+      <HowItWorks></HowItWorks>
       <Achivement></Achivement>
+      <Testimonials></Testimonials>
             
         </div>
     );
