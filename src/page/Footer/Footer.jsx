@@ -21,9 +21,10 @@ const Footer = () => {
                                
                                 <li><Link to='/privacy' className="hover:text-pink-600 cursor-pointer transition-colors">Privacy Policy</Link></li>
                                 <li><Link to='/faq' className="hover:text-pink-600 cursor-pointer transition-colors">FAQs</Link></li>
-                                 <li className="hover:text-pink-600 cursor-pointer transition-colors">Help Center</li>
-                                <li className="hover:text-pink-600 cursor-pointer transition-colors">Terms of Service</li>
-                                <li className="hover:text-pink-600 cursor-pointer transition-colors">Blog</li>
+                                <li><Link to='/terms' className="hover:text-pink-600 cursor-pointer transition-colors">Terms of Service</Link></li>
+                                <li><Link to='/blog' className="hover:text-pink-600 cursor-pointer transition-colors">Blog</Link></li>
+                                 {/* <li className="hover:text-pink-600 cursor-pointer transition-colors">Help Center</li>
+                                 */}
                           
                                 </ul>
                             </div>
@@ -32,9 +33,8 @@ const Footer = () => {
                                 <ul className="space-y-2 text-gray-300">
                                    <li><Link to='/about' className="hover:text-pink-600 cursor-pointer transition-colors">About Us</Link></li>
                                     <li><Link to='/contact' className="hover:text-pink-600 cursor-pointer transition-colors">Contact</Link></li>
-                                    <li className="hover:text-pink-600 cursor-pointer transition-colors">Careers</li>
-                                    <li className="hover:text-pink-600 cursor-pointer transition-colors">Press</li>
-                                    <li className="hover:text-pink-600 cursor-pointer transition-colors">Partnerships</li>
+                                    <li><Link to='/careers' className="hover:text-pink-600 cursor-pointer transition-colors">Careers</Link></li>
+                                    <li><Link to='/partner' className="hover:text-pink-600 cursor-pointer transition-colors">Partnerships</Link></li>
                                 </ul>
                             </div>
                         </div>

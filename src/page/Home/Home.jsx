@@ -9,6 +9,7 @@ import Loading from '../../Components/Loading/Loading';
 import Achivement from '../../Components/Achivement/Achivement';
 import HowItWorks from '../../Components/HowItWorks/HowitWorks';
 import Testimonials from '../../Components/Testimonials/Testimonials';
+import FAQ from '../FAQ/FAQ';
 
 
 
@@ -60,6 +61,7 @@ const Home = () => {
       <HowItWorks></HowItWorks>
       <Achivement></Achivement>
       <Testimonials></Testimonials>
+      <FAQ></FAQ>
             
         </div>
     );

@@ -6,6 +6,7 @@ import { TbEyeClosed } from 'react-icons/tb';
 import toast from "react-hot-toast"
 import { FcGoogle } from 'react-icons/fc';
 import { getFriendlyMessage } from '../../Components/ErrorMessage/errorMessage';
+import axios from 'axios';
 
 
 
@@ -19,18 +20,45 @@ const LogIn = () => {
   const {signinUser,googleUser} =use(AuthContext)
    const location = useLocation()    
    const handelGoogleLogin=()=>{
+          //  googleUser()
+          //  .then((result)=>{
+          //    console.log(result.user)
+          //    toast.success("🎉 Login Successful!");
+          //    navigate(location.state|| '/')
+            
+            
+          //  })
+          //  .catch(error=>{
+          //   console.log(error)
+          //   setError('Something error!')
+          //  })
            googleUser()
-           .then((result)=>{
-             console.log(result.user)
-             toast.success("🎉 Login Successful!");
-             navigate(location.state|| '/')
-            
-            
-           })
-           .catch(error=>{
-            console.log(error)
-            setError('Something error!')
-           })
+      .then((result) => {
+        console.log(result.user);
+        toast.success("🎉 Login Successful!");
+        
+        // ✅ Save Google user to MongoDB
+        const userInfo = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL,
+        };
+        
+        axios.post('https://online-learning-platform-server-livid.vercel.app/users', userInfo)
+          .then((response) => {
+            console.log('Google user saved/updated:', response.data);
+          })
+          .catch((err) => {
+            console.error('Error saving Google user:', err);
+          });
+        
+        navigate(location.state || '/');
+      })
+      .catch(error => {
+        console.log(error);
+        const message = getFriendlyMessage(error.code);
+        setError(message);
+      });
     }
    const handelLogin=(e)=>{
      e.preventDefault()

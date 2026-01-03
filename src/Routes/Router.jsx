@@ -19,6 +19,13 @@ import PrivacyPolicy from "../page/PrivacyPolicy/PrivacyPolicy";
 import FAQ from "../page/FAQ/FAQ";
 import Blog from "../page/Blog/Blog";
 import Dashboardlayout from "../Layout/Dashboardlayout";
+import MyProfile from "../page/MyProfile/MyProfile";
+import UserManagement from "../page/UserManagement/UserManagement";
+import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
+import TermsAndService from "../page/TermsAndService/TermsAndService";
+import Careers from "../page/Careers/Careers";
+import Partnerships from "../page/Partnerships/Partnerships";
 
 
 
@@ -76,8 +83,18 @@ export const router = createBrowserRouter([
         {
          path:'/details/:id',
          element:<CourseDetails></CourseDetails>
-        
-         
+        },
+        {
+         path:'terms',
+         element:<TermsAndService></TermsAndService>
+        },
+        {
+         path:'careers',
+         element:<Careers></Careers>
+        },
+        {
+         path:'partner',
+         element:<Partnerships></Partnerships>
         },
         // {
         //   path:'addCourse',
@@ -111,15 +128,23 @@ export const router = createBrowserRouter([
       },
               {
           path:'addCourse',
-          element:<AddCourse></AddCourse>
+          element:<StudentRoute><AddCourse></AddCourse></StudentRoute>
         },
         {
           path:'myAddCourse',
-          element:<MyAddedCourse></MyAddedCourse>
+          element:<StudentRoute><MyAddedCourse></MyAddedCourse></StudentRoute>
         },
         {
          path:'updateCourse/:id',
-         element:<UpdateCourse></UpdateCourse>
+         element:<StudentRoute><UpdateCourse></UpdateCourse></StudentRoute>
+        },
+        {
+         path:'myprofile',
+         element:<MyProfile></MyProfile>
+        },
+        {
+         path:'userManagement',
+         element:<AdminRoute><UserManagement></UserManagement></AdminRoute>
         },
     ]
   }

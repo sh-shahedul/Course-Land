@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
       <div className="relative container mx-auto px-4 text-center p-10">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold text-pink-600 mb-3">

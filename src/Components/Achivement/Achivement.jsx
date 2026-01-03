@@ -32,7 +32,7 @@ const Achivement = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16">
+    <section ref={ref} className="py-16 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
       <div className="max-w-6xl mx-auto text-center px-5">
         {/* Title */}
         <motion.h2

@@ -35,7 +35,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
+    <section className="py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

@@ -29,7 +29,7 @@ const Courses = () => {
   }, [selectedCategory]);
 
   return (
-    <section className="py-16  min-h-screen w-[97%] mx-auto">
+    <section className="py-16  min-h-screen w-[97%] mx-auto  ">
       <title>All courses | CourseLand</title>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto px-4 text-center">

@@ -73,10 +73,16 @@ import React from 'react';
 import { MdLibraryAdd, MdLibraryBooks } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router';
 import logo from '../assets/logo.png'
-import { HiViewBoards } from 'react-icons/hi';
+import { HiUserCircle, HiViewBoards } from 'react-icons/hi';
 import { FaBookReader } from 'react-icons/fa';
+import useRole from '../Hook/useRole';
+import Loading from '../Components/Loading/Loading';
+import { FaElevator } from 'react-icons/fa6';
+import { Toaster } from 'react-hot-toast';
 
 const Dashboardlayout = () => {
+  const {role, roleLoading} = useRole()
+  if(roleLoading) return <Loading></Loading>
     return (
         <div className="drawer lg:drawer-open max-w-screen-2xl mx-auto bg-base-200 ">
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -113,9 +119,12 @@ const Dashboardlayout = () => {
 
       {/* Sidebar Menu */}
       <ul className="menu w-full grow p-2 space-y-2 mt-2">
-      
+        
 
-        {/* Add Course */}
+        {
+          role === "student" && <>  
+          
+               {/* Add Course */}
         <li>
           <NavLink 
             to='/dashboard/addCourse'
@@ -168,6 +177,54 @@ const Dashboardlayout = () => {
             <span className="is-drawer-close:hidden">My Enrolled Courses</span>
           </NavLink>
         </li>
+          
+          
+          
+          </> 
+        }
+
+        {
+          role === "admin" && <>
+              <li>
+          <NavLink 
+            to='/dashboard/userManagement'
+            className={({ isActive }) =>
+              `is-drawer-close:tooltip is-drawer-close:tooltip-right group rounded-xl transition-all duration-300 ${
+                isActive 
+                  ? 'bg-white text-purple-600 shadow-lg font-semibold' 
+                  : 'text-white hover:bg-white/10 hover:backdrop-blur-md'
+              }`
+            } 
+            data-tip="User Management"
+          >
+            <FaElevator size={20}  className={`transition-transform group-hover:scale-110`}/>
+           
+            <span className="is-drawer-close:hidden">User Management</span>
+          </NavLink>
+        </li>
+          </>
+        }
+          
+
+
+          <li>
+          <NavLink 
+            to='/dashboard/myprofile'
+            className={({ isActive }) =>
+              `is-drawer-close:tooltip is-drawer-close:tooltip-right group rounded-xl transition-all duration-300 ${
+                isActive 
+                  ? 'bg-white text-purple-600 shadow-lg font-semibold' 
+                  : 'text-white hover:bg-white/10 hover:backdrop-blur-md'
+              }`
+            } 
+            data-tip="My Profile"
+          >
+            <HiUserCircle size={24}  className={`transition-transform group-hover:scale-110`}/>
+            <span className="is-drawer-close:hidden">My Profile</span>
+          </NavLink>
+        </li>
+          
+       
       </ul>
 
       {/* Sidebar Footer */}
@@ -179,6 +236,7 @@ const Dashboardlayout = () => {
       </div>
     </div>
   </div>
+   <Toaster reverseOrder={false} />
 </div>
     );
 };

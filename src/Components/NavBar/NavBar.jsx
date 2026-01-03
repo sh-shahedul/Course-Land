@@ -214,20 +214,21 @@ import logo from '../../assets/logo.png'
 import { IoIosArrowDown } from 'react-icons/io';
 import { AuthContext } from '../../Provider/AuthContext';
 import toast from 'react-hot-toast';
-import { FaHome } from 'react-icons/fa';
+import { FaBuysellads, FaHome } from 'react-icons/fa';
 import { TbLayoutDashboardFilled } from 'react-icons/tb';
 import { MdLibraryBooks } from 'react-icons/md';
 import { CiLogout } from 'react-icons/ci';
 import { FiLogIn } from 'react-icons/fi';
 import userLogo from '../../assets/user.png'
 import { BiSolidContact } from "react-icons/bi";
-import { BsFillCCircleFill } from 'react-icons/bs';
 import { ImBlogger } from 'react-icons/im';
+import useRole from '../../Hook/useRole';
 
 const Navbar = () => {
 const {user,signOutUser} =use(AuthContext)
 const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 const navigate = useNavigate()
+const{role} =useRole()
   useEffect(() => {
     const html = document.querySelector("html");
     html.setAttribute("data-theme", theme);
@@ -248,14 +249,23 @@ const handelSignOut =()=>{
           })  
 }
 
- const handleRole = () => {
-       navigate("/dashboard/myEnrollCourse")
+
+const handleRole = () => {
+
+       
+        if (role === "student") {
+            navigate("/dashboard/addCourse")
+        }
+        if (role === "admin") {
+            navigate("/dashboard/userManagement")
+        }
+        
     }
 
 const links = <>
             <li><NavLink  to="/" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}><FaHome />  Home </NavLink></li>
             <li><NavLink to="/courses" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <MdLibraryBooks />  Courses </NavLink> </li>
-            <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <BsFillCCircleFill /> About </NavLink> </li>
+            <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <FaBuysellads /> About </NavLink> </li>
             <li><NavLink to="/contact" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <BiSolidContact />  Contact </NavLink> </li>
             <li><NavLink to="/blog" className={({ isActive }) => isActive ? "text-pink-600 font-bold " : "dark:text-gray-300"}> <ImBlogger /> Blog </NavLink> </li>
 </>
@@ -351,6 +361,7 @@ const links = <>
       {/* Avatar with Dropdown */}
       {user && (
         <div className="dropdown dropdown-end">
+          
           <div tabIndex={0} role="button" className="text-white w-10 h-10 flex items-center justify-center border-2 rounded-full cursor-pointer relative">
             <img
               referrerPolicy='no-referrer'
@@ -359,10 +370,16 @@ const links = <>
               alt="User Image"
             />
           </div>
+          
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-white dark:bg-gray-800 rounded-box w-52 mt-3">
+            className="dropdown-content menu p-2 shadow bg-white dark:bg-gray-800 rounded-box  mt-3">
+            <div className='px-4 py-2 bg-purple-200 rounded-lg  font-semibold'>
+            <h2>{user.displayName}</h2>
+            <h2>{user.email}</h2>
+          </div>
             <li>
+
               <button 
                 onClick={handleRole} 
                 className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-pink-600 hover:bg-purple-100 dark:hover:bg-gray-700 font-semibold">
