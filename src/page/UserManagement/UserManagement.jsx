@@ -223,6 +223,8 @@ const UserManagement = () => {
         <table className="w-full border-collapse border border-gray-200">
           <thead className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white">
             <tr>
+              <th className="py-3 px-4 text-left">#</th>
+              <th className="py-3 px-4 text-left">Photo</th>
               <th className="py-3 px-4 text-left">Name</th>
               <th className="py-3 px-4 text-left">Email</th>
               <th className="py-3 px-4 text-left">Role</th>
@@ -236,7 +238,22 @@ const UserManagement = () => {
                 key={user._id}
                 className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
               >
-                <td className="py-3 px-4 font-medium">{user.name}</td>
+                <td className="py-3 px-4 font-semibold whitespace-nowrap">{idx + 1}</td>
+                 <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle h-12 w-12">
+                <img
+                  src={user.photo}
+                  alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              
+            </div>
+          </div>
+        </td>
+                <td className="py-3 px-4 font-medium whitespace-nowrap">{user.name}</td>
                 <td className="py-3 px-4">{user.email}</td>
 
                 <td className="py-3 px-4">

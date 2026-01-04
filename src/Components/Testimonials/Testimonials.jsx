@@ -115,7 +115,7 @@ const Testimonials = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="  relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}

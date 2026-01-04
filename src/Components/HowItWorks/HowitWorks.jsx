@@ -1,6 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaSearch, FaUserPlus, FaBook, FaCertificate } from 'react-icons/fa';
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router";
+import { FaSearch, FaUserPlus, FaBook, FaCertificate } from "react-icons/fa";
+
+const MotionLink = motion(Link);
 
 const HowItWorks = () => {
   const steps = [
@@ -8,35 +11,39 @@ const HowItWorks = () => {
       id: 1,
       icon: <FaSearch className="text-5xl" />,
       title: "Browse Courses",
-      description: "Explore our extensive collection of courses across multiple categories. Find the perfect course that matches your learning goals and interests.",
-      color: "from-pink-500 to-pink-600"
+      description:
+        "Explore our extensive collection of courses across multiple categories. Find the perfect course that matches your learning goals and interests.",
+      color: "from-pink-500 to-pink-600",
     },
     {
       id: 2,
       icon: <FaUserPlus className="text-5xl" />,
       title: "Enroll Today",
-      description: "Sign up and enroll in your chosen course with just a few clicks. Get instant access to all course materials and resources.",
-      color: "from-purple-500 to-purple-600"
+      description:
+        "Sign up and enroll in your chosen course with just a few clicks. Get instant access to all course materials and resources.",
+      color: "from-purple-500 to-purple-600",
     },
     {
       id: 3,
       icon: <FaBook className="text-5xl" />,
       title: "Learn & Practice",
-      description: "Study at your own pace with video lectures, interactive assignments, and hands-on projects. Get support from instructors anytime.",
-      color: "from-indigo-500 to-indigo-600"
+      description:
+        "Study at your own pace with video lectures, interactive assignments, and hands-on projects. Get support from instructors anytime.",
+      color: "from-indigo-500 to-indigo-600",
     },
     {
       id: 4,
       icon: <FaCertificate className="text-5xl" />,
       title: "Get Certified",
-      description: "Complete your course and earn a certificate of completion. Showcase your new skills to employers and advance your career.",
-      color: "from-pink-600 to-purple-600"
-    }
+      description:
+        "Complete your course and earn a certificate of completion. Showcase your new skills to employers and advance your career.",
+      color: "from-pink-600 to-purple-600",
+    },
   ];
 
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
-      <div className="max-w-7xl mx-auto">
+      <div>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -53,12 +60,11 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
-        {/* Steps Container */}
+        {/* Steps */}
         <div className="relative">
-          {/* Connection Line - Desktop */}
+          {/* Desktop Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 -translate-y-1/2 opacity-20"></div>
 
-          {/* Steps Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {steps.map((step, index) => (
               <motion.div
@@ -69,7 +75,6 @@ const HowItWorks = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="relative"
               >
-                {/* Step Card */}
                 <motion.div
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 relative z-10 h-full flex flex-col"
@@ -79,7 +84,7 @@ const HowItWorks = () => {
                     {step.id}
                   </div>
 
-                  {/* Icon Container */}
+                  {/* Icon */}
                   <motion.div
                     whileHover={{ rotate: 5, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
@@ -98,18 +103,23 @@ const HowItWorks = () => {
                     {step.description}
                   </p>
 
-                  {/* Decorative Bottom Line */}
-                  <div className={`w-16 h-1 bg-gradient-to-r ${step.color} rounded-full mx-auto mt-6`}></div>
+                  {/* Bottom Line */}
+                  <div
+                    className={`w-16 h-1 bg-gradient-to-r ${step.color} rounded-full mx-auto mt-6`}
+                  ></div>
                 </motion.div>
 
-                {/* Arrow Connector - Desktop Only */}
+                {/* Arrow */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
                     <motion.svg
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.2 + 0.3,
+                      }}
                       className="w-6 h-6 text-purple-600"
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -127,7 +137,7 @@ const HowItWorks = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -135,10 +145,13 @@ const HowItWorks = () => {
           transition={{ duration: 0.7, delay: 0.8 }}
           className="text-center mt-16"
         >
-          <motion.button
+          <MotionLink
+            to="/courses"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-3 mx-auto"
+            className="px-10 py-4 bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-500
+                       text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl
+                       transition-all duration-300 flex items-center gap-3 mx-auto w-fit"
           >
             Get Started Now
             <motion.svg
@@ -149,9 +162,14 @@ const HowItWorks = () => {
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
             </motion.svg>
-          </motion.button>
+          </MotionLink>
         </motion.div>
       </div>
     </section>
