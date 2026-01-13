@@ -14,7 +14,7 @@ Check out the live version of **Course Land** here:
 
 [🔗 Visit Live Site Netlify](https://courselandplat.netlify.app)
 
-[🔗 Visit Live Site Firebase](https://course-land-b6150.web.app)
+
 
 
 ---
